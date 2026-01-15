@@ -17,27 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
         with:
-          version: latest
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-      
-      - name: Install dependencies
-        run: pnpm install
-      
-      - name: Build Astro site
-        run: pnpm build
-      
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
+          package-manager: pnpm@latest
       
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -47,7 +30,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           local-dir: ./dist/
-          server-dir: ./
+          server-dir: ./eue-site/
 
   deploy-github-pages:
     needs: build
