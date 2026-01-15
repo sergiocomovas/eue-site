@@ -1,29 +1,46 @@
 # Git Flow Guide
 
+## Instalación
+
+Primero instalar git flow si no está instalado:
+
+```bash
+# Windows (Git Bash)
+# Ya viene instalado con Git para Windows
+```
+
 ## Convención de nombres
 
-Todas las ramas feature tienen el formato: `feature/yyyy-mm-dd-hh-ss-descripcion`
+Todas las features tienen el formato: `yyyy-mm-dd-hh-ss-descripcion`
 
 Ejemplos:
-- `feature/2026-01-15-14-30-agregar-botones-likes`
-- `feature/2026-01-16-09-15-arreglar-footer`
-- `feature/2026-01-20-16-45-nuevo-componente`
+- `2026-01-15-14-30-agregar-botones-likes`
+- `2026-01-16-09-15-arreglar-footer`
+- `2026-01-20-16-45-nuevo-componente`
 
 ## Flujo de trabajo diario
 
-### 1. Crear nueva feature
+### 1. Inicializar git flow (solo la primera vez)
+```bash
+# En la carpeta del proyecto
+git flow init -d
+```
+
+### 2. Crear nueva feature
 ```bash
 # Asegurarse de estar en develop
 git checkout develop
-
-# Actualizar develop
 git pull origin develop
 
-# Crear nueva feature (formato: yyyy-mm-dd-hh-ss-descripcion)
-git checkout -b feature/2026-01-15-14-30-mi-tarea
+# Crear nueva feature
+git flow feature start 2026-01-15-14-30-mi-tarea
 ```
 
-### 2. Trabajar y hacer commits
+Esto hace:
+- Crea rama `feature/2026-01-15-14-30-mi-tarea` desde develop
+- Cambia a esa rama automáticamente
+
+### 3. Trabajar y hacer commits
 ```bash
 # Hacer cambios en los archivos
 # ...
@@ -38,35 +55,32 @@ git add .
 git commit -m "Agregar componente LikeButton con animaciones"
 ```
 
-### 3. Cerrar feature (merge + push en un comando)
+Puedes hacer todos los commits que necesites en la feature.
+
+### 4. Actualizar feature con cambios de develop (opcional)
 ```bash
-# Volver a develop
-git checkout develop
-
-# Actualizar develop
-git pull origin develop
-
-# Merge de la feature y borrarla
-git merge --no-ff feature/2026-01-15-14-30-mi-tarea -m "Merge feature 2026-01-15-14-30-mi-tarea"
-
-# Borrar rama local
-git branch -d feature/2026-01-15-14-30-mi-tarea
-
-# Subir cambios y borrar rama remota
-git push origin develop && git push origin --delete feature/2026-01-15-14-30-mi-tarea
+# Si ha pasado tiempo y quieres traer cambios de develop
+git flow feature pull origin 2026-01-15-14-30-mi-tarea
 ```
 
-## Comando unificado para cerrar feature
-
-Si quieres hacer todo en un solo comando (merge + push + borrar):
-
+### 5. Cerrar feature (merge + push + borrar en UN comando)
 ```bash
-# Guardar esto como alias en tu shell o usar directamente
-git checkout develop && \
-git pull origin develop && \
-git merge --no-ff feature/2026-01-15-14-30-mi-tarea -m "Merge feature 2026-01-15-14-30-mi-tarea" && \
-git branch -d feature/2026-01-15-14-30-mi-tarea && \
-git push origin develop && \
+# Terminar feature
+git flow feature finish 2026-01-15-14-30-mi-tarea
+```
+
+Esto hace AUTOMÁTICAMENTE:
+- Merge de la feature en develop
+- Cambia a develop
+- Borra la rama feature local
+- No borra la rama remota (ver paso 6)
+
+### 6. Subir cambios y borrar rama remota
+```bash
+# Subir develop
+git push origin develop
+
+# Borrar rama feature remota
 git push origin --delete feature/2026-01-15-14-30-mi-tarea
 ```
 
@@ -79,30 +93,46 @@ git push origin --delete feature/2026-01-15-14-30-mi-tarea
 
 ### `develop`
 - Desarrollo diario
-- Todas las features se mergen aquí
-- Base para nuevas features y releases
+- Todas las features se fusionan aquí
+- Base para nuevas features
 
-## Tipos de ramas
+## Comandos git flow
 
-### `feature/*`
-- Nueva funcionalidad
-- Nacen de `develop`
-- Se fusionan en `develop`
+### Features
+```bash
+# Crear feature
+git flow feature start yyyy-mm-dd-hh-ss-descripcion
 
-### `release/*` (opcional)
-- Preparar release
-- Nacen de `develop`
-- Se fusionan en `main` (con tag) y `develop`
+# Listar features activas
+git flow feature list
 
-### `hotfix/*` (opcional)
-- Corrección urgente en producción
-- Nacen de `main`
-- Se fusionan en `main` (con tag) y `develop`
+# Publicar feature (crear rama remota)
+git flow feature publish yyyy-mm-dd-hh-ss-descripcion
 
-### `bugfix/*` (opcional)
-- Bug no urgente
-- Nacen de `develop`
-- Se fusionan en `develop`
+# Traer cambios remotos a feature
+git flow feature pull origin yyyy-mm-dd-hh-ss-descripcion
+
+# Terminar feature
+git flow feature finish yyyy-mm-dd-hh-ss-descripcion
+```
+
+### Releases (opcional)
+```bash
+# Crear release
+git flow release start v1.0.0
+
+# Terminar release (merge en main y develop, crear tag)
+git flow release finish v1.0.0
+```
+
+### Hotfixes (opcional)
+```bash
+# Crear hotfix desde main
+git flow hotfix start v1.0.1
+
+# Terminar hotfix (merge en main y develop, crear tag)
+git flow hotfix finish v1.0.1
+```
 
 ## Escenarios comunes
 
@@ -110,67 +140,59 @@ git push origin --delete feature/2026-01-15-14-30-mi-tarea
 ```bash
 # 1. Crear feature desde develop
 git checkout develop
-git pull
-git checkout -b feature/2026-01-15-14-30-nueva-funcion
+git pull origin develop
+git flow feature start 2026-01-15-14-30-nueva-funcion
 
-# 2. Trabajar
-# ... hacer cambios ...
+# 2. Trabajar (hacer commits)
 git add .
 git commit -m "Implementar nueva funcionalidad"
+# ... más commits ...
 
-# 3. Cerrar feature
-git checkout develop
-git merge --no-ff feature/2026-01-15-14-30-nueva-funcion
-git branch -d feature/2026-01-15-14-30-nueva-funcion
+# 3. Actualizar con develop si es necesario
+git flow feature pull origin 2026-01-15-14-30-nueva-funcion
+
+# 4. Terminar feature (hace merge, cambia a develop, borra feature local)
+git flow feature finish 2026-01-15-14-30-nueva-funcion
+
+# 5. Subir cambios y borrar feature remota
 git push origin develop
 git push origin --delete feature/2026-01-15-14-30-nueva-funcion
 ```
 
-### Escenario 2: Corregir bug en desarrollo
+### Escenario 2: Corregir bug en desarrollo (usando feature)
 ```bash
-# 1. Crear bugfix desde develop
+# 1. Crear feature para bug
 git checkout develop
-git pull
-git checkout -b bugfix/2026-01-15-15-00-corregir-error
+git pull origin develop
+git flow feature start 2026-01-15-15-00-corregir-error
 
 # 2. Corregir
 git add .
 git commit -m "Corregir error en footer"
 
-# 3. Cerrar bugfix
-git checkout develop
-git merge --no-ff bugfix/2026-01-15-15-00-corregir-error
-git branch -d bugfix/2026-01-15-15-00-corregir-error
+# 3. Terminar
+git flow feature finish 2026-01-15-15-00-corregir-error
+
+# 4. Subir
 git push origin develop
-git push origin --delete bugfix/2026-01-15-15-00-corregir-error
+git push origin --delete feature/2026-01-15-15-00-corregir-error
 ```
 
 ### Escenario 3: Hotfix urgente en producción
 ```bash
 # 1. Crear hotfix desde main
-git checkout main
-git pull
-git checkout -b hotfix/2026-01-15-16-00-critico-bug
+git flow hotfix start v1.0.1
 
-# 2. Corregir y commit
+# 2. Corregir
 git add .
 git commit -m "Corregir bug crítico"
 
-# 3. Merge en main y crear tag
-git checkout main
-git merge --no-ff hotfix/2026-01-15-16-00-critico-bug
-git tag v1.0.1
-git branch -d hotfix/2026-01-15-16-00-critico-bug
+# 3. Terminar (hace merge en main Y develop, crea tag v1.0.1)
+git flow hotfix finish v1.0.1
 
-# 4. Merge en develop
-git checkout develop
-git merge --no-ff hotfix/2026-01-15-16-00-critico-bug
-git branch -d hotfix/2026-01-15-16-00-critico-bug
-
-# 5. Subir todo
+# 4. Subir todo (main con tag + develop)
 git push origin main --tags
 git push origin develop
-git push origin --delete hotfix/2026-01-15-16-00-critico-bug
 ```
 
 ## Comandos útiles
@@ -185,6 +207,12 @@ git branch -r
 
 # Ver todas las ramas
 git branch -a
+```
+
+### Ver features activas
+```bash
+# Ver features en desarrollo
+git flow feature list
 ```
 
 ### Ver historial
@@ -207,14 +235,14 @@ git diff archivo.txt
 
 ## Reglas del equipo
 
-1. **Siempre crear features desde develop**
-2. **Usar formato de nombre: yyyy-mm-dd-hh-ss-descripcion**
+1. **Usar `git flow feature start`** para crear features
+2. **Usar formato yyyy-mm-dd-hh-ss-descripcion**
 3. **Hacer commits con mensajes claros**
-4. **Nunca hacer commits directos en develop**
+4. **Usar `git flow feature finish`** para cerrar features**
 5. **Siempre hacer pull antes de crear feature**
-6. **Cerrar features con merge a develop**
-7. **Borrar ramas feature después del merge**
-8. **Hotfixes desde main, bugfixes desde develop**
+6. **Siempre hacer push después de `feature finish`**
+7. **Usar hotfixes para bugs críticos en producción**
+8. **Usar features para bugs no críticos en desarrollo**
 
 ## GitHub Actions
 
@@ -226,3 +254,23 @@ El build se ejecuta automáticamente en cada push a:
 - `hotfix/*`
 
 Si el build falla, corregir antes de continuar.
+
+## Ventajas de usar git flow
+
+1. **Un comando crea rama y cambia a ella**
+   ```bash
+   git flow feature start 2026-01-15-14-30-mi-tarea
+   ```
+
+2. **Un comando cierra todo**
+   - Merge en develop
+   - Cambia a develop
+   - Borra rama feature local
+   ```bash
+   git flow feature finish 2026-01-15-14-30-mi-tarea
+   ```
+
+3. **Menos comandos manuales**
+   - No tienes que hacer `git checkout -b feature/...`
+   - No tienes que hacer `git merge --no-ff`
+   - No tienes que hacer `git branch -d feature/...`
