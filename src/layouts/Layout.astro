@@ -133,6 +133,7 @@ const {
 
       document.addEventListener("astro:after-swap", () => {
         const theme = getTheme();
+        setTheme(theme);
         updateThemeButton(theme);
       });
     </script>

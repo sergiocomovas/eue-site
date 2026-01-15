@@ -55,8 +55,9 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://europa.comovas.es";
-const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
-const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
+const baseUrl = import.meta.env.BASE_URL;
+const canonicalUrl = canonical ? `${siteUrl}${baseUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
+const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${baseUrl}${image}`;
 
 const robots = [noindex ? "noindex" : "index", nofollow ? "nofollow" : "follow"].join(", ");
 
@@ -73,14 +74,14 @@ const schema = {
     ...(authors && { "author": authors.map(author => ({ "@type": "Person", "name": author })) }),
     ...(section && { "articleSection": section }),
     ...(tags && { "keywords": tags.join(", ") }),
-    "publisher": {
-      "@type": "Organization",
-      "name": "Estados Unidos de Europa",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${siteUrl}/logo.png`
+      "publisher": {
+        "@type": "Organization",
+        "name": "Estados Unidos de Europa",
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}${baseUrl}/logo.png`
+        }
       }
-    }
   } : {}),
   ...(website ? {
     "@context": "https://schema.org",
