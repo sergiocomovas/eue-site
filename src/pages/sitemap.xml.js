@@ -9,7 +9,7 @@ const pages = [
   { url: '/vivienda', lastmod: new Date(), changefreq: 'monthly', priority: 0.9 }
 ];
 
-const siteUrl = 'https://estados-unidos-europa.com';
+const siteUrl = 'https://europa.comovas.es/eue-site';
 
 export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

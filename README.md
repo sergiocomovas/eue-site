@@ -91,18 +91,12 @@ El proyecto ha sido optimizado para SEO con:
 
 ## 🌐 Deployment
 
+El proyecto está desplegado en:
+
+- **https://europa.comovas.es/** - Despliegue principal
+- **https://sergiocomovas.github.io/eue-site/** - Mirror en GitHub Pages
+
 El proyecto está configurado para despliegue en cualquier plataforma que soporte sitios estáticos (Vercel, Netlify, GitHub Pages, etc.).
-
-### Dominio propuesto
-
-Sugiero uno de estos subdominios en `comovas.es`:
-
-- `eue.comovas.es` - Corto, memorable, acrónimo del proyecto
-- `eue-demo.comovas.es` - Indica claramente que es una demo/proyecto
-- `europe.federada.comovas.es` - Descriptivo y profesional
-- `federacion.europea.comovas.es` - Alternativa más explícita
-
-**Recomendación**: `eue.comovas.es` - Es corto, fácil de recordar y directamente relacionado con el nombre del proyecto.
 
 ## 📄 Contenido
 

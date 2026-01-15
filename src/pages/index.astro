@@ -404,10 +404,10 @@ import LikeButton from "../components/LikeButton.tsx";
         política real.
       </p>
       <div class="flex flex-wrap justify-center gap-6">
-        <a href="/politica" class="text-white underline font-bold text-lg"
+        <a href={`${import.meta.env.BASE_URL}/politica/index.html`} class="text-white underline font-bold text-lg"
           >Sistema Político</a
         >
-        <a href="/defensa" class="text-white underline font-bold text-lg"
+        <a href={`${import.meta.env.BASE_URL}/defensa/index.html`} class="text-white underline font-bold text-lg"
           >Defensa Federal</a
         >
       </div>
@@ -420,7 +420,7 @@ import LikeButton from "../components/LikeButton.tsx";
       <p class="text-xl md:text-2xl text-red-100 mb-10">
         Presidente federal y Parlamento bicameral.
       </p>
-      <a href="/politica" class="btn-accion">Ver Sistema</a>
+      <a href={`${import.meta.env.BASE_URL}/politica/index.html`} class="btn-accion">Ver Sistema</a>
     </div>
   </section>
 
@@ -430,7 +430,7 @@ import LikeButton from "../components/LikeButton.tsx";
       <p class="text-xl md:text-2xl text-purple-100 mb-10">
         Ejército Europeo profesional y UMEE.
       </p>
-      <a href="/defensa" class="btn-accion">Explorar Defensa</a>
+      <a href={`${import.meta.env.BASE_URL}/defensa/index.html`} class="btn-accion">Explorar Defensa</a>
     </div>
   </section>
 
@@ -442,7 +442,7 @@ import LikeButton from "../components/LikeButton.tsx";
         <p class="descripcion-tarjeta">
           Compartimos poder en lo estratégico, identidad en lo local.
         </p>
-        <a href="/politica" class="btn-accion text-center">Explorar</a>
+        <a href={`${import.meta.env.BASE_URL}/politica/index.html`} class="btn-accion text-center">Explorar</a>
       </div>
       <div class="tarjeta-horizontal">
         <h2 class="titulo-tarjeta">🛡️ Defensa Federal</h2>
@@ -450,7 +450,7 @@ import LikeButton from "../components/LikeButton.tsx";
         <p class="descripcion-tarjeta">
           Ejército europeo unificado con todas las ramas de defensa.
         </p>
-        <a href="/defensa" class="btn-accion text-center">Ver Defensa</a>
+        <a href={`${import.meta.env.BASE_URL}/defensa/index.html`} class="btn-accion text-center">Ver Defensa</a>
       </div>
       <div class="tarjeta-horizontal">
         <h2 class="titulo-tarjeta">🌍 Lingua Franca</h2>
@@ -458,7 +458,7 @@ import LikeButton from "../components/LikeButton.tsx";
         <p class="descripcion-tarjeta">
           Euro-English para administración y ciencia común.
         </p>
-        <a href="/educacion" class="btn-accion text-center">Descubrir</a>
+        <a href={`${import.meta.env.BASE_URL}/educacion/index.html`} class="btn-accion text-center">Descubrir</a>
       </div>
       <div class="tarjeta-horizontal">
         <h2 class="titulo-tarjeta">🚄 EuroBananas</h2>
@@ -466,7 +466,7 @@ import LikeButton from "../components/LikeButton.tsx";
         <p class="descripcion-tarjeta">
           Corredores de alta capacidad que conectan el continente.
         </p>
-        <a href="/infraestructura" class="btn-accion text-center"
+        <a href={`${import.meta.env.BASE_URL}/infraestructura/index.html`} class="btn-accion text-center"
           >Infraestructura</a
         >
       </div>
@@ -476,7 +476,7 @@ import LikeButton from "../components/LikeButton.tsx";
         <p class="descripcion-tarjeta">
           Acceso garantizado en máximo 22 años. Vouchers portables.
         </p>
-        <a href="/vivienda" class="btn-accion text-center">Explorar</a>
+        <a href={`${import.meta.env.BASE_URL}/vivienda/index.html`} class="btn-accion text-center">Explorar</a>
       </div>
     </div>
   </section>
@@ -495,7 +495,7 @@ import LikeButton from "../components/LikeButton.tsx";
       <p class="descripcion-tarjeta">
         Presidente elegido por ti y Parlamento bicameral federal.
       </p>
-      <a href="/politica" class="btn-accion mt-6 w-max">Ver Sistema</a>
+        <a href={`${import.meta.env.BASE_URL}/politica/index.html`} class="btn-accion mt-6 w-max">Ver Sistema</a>
     </div>
     <div class="tarjeta-apilable tarjeta-tres">
       <h2 class="titulo-tarjeta">Más Allá 2040-2050-2060</h2>
@@ -503,19 +503,19 @@ import LikeButton from "../components/LikeButton.tsx";
       <p class="descripcion-tarjeta">
         Tecnología y productividad para competir en el mundo.
       </p>
-      <a href="/vivienda" class="btn-accion mt-6 w-max">Ahora y en el Futuro</a>
+        <a href={`${import.meta.env.BASE_URL}/vivienda/index.html`} class="btn-accion mt-6 w-max">Ahora y en el Futuro</a>
     </div>
   </section>
 
   <section id="seccion-final" class="seccion-final">
-    <video id="video-fondo" class="video-fondo" playsinline muted src="/hero-video.mp4"></video>
+    <video id="video-fondo" class="video-fondo" playsinline muted src={`${import.meta.env.BASE_URL}/hero-video.mp4`}></video>
 
     <div class="contenido-sobre-video">
       <h1 class="text-5xl md:text-7xl font-bold mb-6">El Futuro es Ahora</h1>
       <p class="text-xl md:text-3xl mb-12 text-blue-100">
         Una Europa unida en que volveremos a ser hermanos
       </p>
-      <a href="/intro" class="btn-accion">Comenzar Exploración</a>
+      <a href={`${import.meta.env.BASE_URL}/intro/index.html`} class="btn-accion">Comenzar Exploración</a>
     </div>
   </section>
 </main>

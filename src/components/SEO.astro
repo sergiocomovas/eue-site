@@ -54,7 +54,7 @@ const {
   website
 } = Astro.props;
 
-const siteUrl = "https://estados-unidos-europa.com";
+const siteUrl = "https://europa.comovas.es";
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
 const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
 
@@ -127,7 +127,7 @@ const schemaJson = JSON.stringify(Object.values(schema).filter(Boolean));
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
 <meta name="generator" content={Astro.generator} />
 
 <title>{title}</title>

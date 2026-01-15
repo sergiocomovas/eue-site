@@ -2,16 +2,16 @@
 import { IconMenu } from "@tabler/icons-react";
 
 const navPrimary = [
-  { href: "/intro", label: "La Federación Explicada" },
-  { href: "/politica", label: "Escucha Hermano" },
-  { href: "/defensa", label: "Defensa" },
-  { href: "/infraestructura", label: "Infraestructura" },
-  { href: "/vivienda", label: "Vivienda y Pensiones" },
+  { href: `${import.meta.env.BASE_URL}/intro/index.html`, label: "La Federación Explicada" },
+  { href: `${import.meta.env.BASE_URL}/politica/index.html`, label: "Escucha Hermano" },
+  { href: `${import.meta.env.BASE_URL}/defensa/index.html`, label: "Defensa" },
+  { href: `${import.meta.env.BASE_URL}/infraestructura/index.html`, label: "Infraestructura" },
+  { href: `${import.meta.env.BASE_URL}/vivienda/index.html`, label: "Vivienda y Pensiones" },
 ];
 
 const navSecondary = [
-  { href: "/educacion", label: "Lingua Franca" },
-  { href: "/simbolos", label: "Símbolos" },
+  { href: `${import.meta.env.BASE_URL}/educacion/index.html`, label: "Lingua Franca" },
+  { href: `${import.meta.env.BASE_URL}/simbolos/index.html`, label: "Símbolos" },
 ];
 ---
 
@@ -20,7 +20,7 @@ const navSecondary = [
 >
   <div class="navbar-start">
     <a
-      href="/"
+      href={`${import.meta.env.BASE_URL}/index.html`}
       class="btn btn-ghost gap-3 normal-case text-base font-semibold tracking-tight"
     >
       <div class="avatar">
