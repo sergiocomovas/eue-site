@@ -1,0 +1,204 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import { IconHome, IconCrosshair } from "@tabler/icons-react";
+---
+
+<Layout
+  title="Vivienda y Pensiones - Estados Unidos de Europa"
+  description="Vivienda garantizada en 22 años y pensiones estables gracias al pacto intergeneracional federal."
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <Section
+      title="Vivienda y pensiones que te acompañan siempre"
+      id="housing-pensions"
+      icon={IconHome}
+    >
+      <p class="text-xl leading-relaxed mb-10 text-center font-light">
+        En la federación, vivienda y pensiones son derechos que no se quedan
+        atrás cuando cambias de sitio. El ente federal garantiza lo esencial,
+        los estados pueden mejorar lo que quieran. Todo portable, claro y
+        pensado para durar.
+      </p>
+
+      <!-- Tabs con contenido scrollable -->
+      <div role="tablist" class="tabs tabs-lift  tabs-lg mb-0 ">
+        <input
+          type="radio"
+          name="housing_pensions_tabs"
+          role="tab"
+          class="tab"
+          aria-label="Vivienda"
+          checked="checked"
+        />
+        <div
+          role="tabpanel"
+          class="tab-content bg-base-100 border-base-300 rounded-b-xl p-6 h-[600px] overflow-y-auto"
+        >
+          <div class="card bg-base-100">
+            <div class="card-body">
+              <h3
+                class="card-title text-2xl font-bold mb-6 flex items-center gap-3"
+              >
+                <IconHome size={28} /> Vivienda: 22 años y listo
+              </h3>
+              <p class="text-lg leading-relaxed mb-6">
+                Desde que te apuntas en el registro, la federación te asegura
+                vivienda digna en un máximo de 22 años. Es un compromiso serio:
+                presupuesto, suelo y planificación propia. Eliges compra o
+                alquiler largo, y la plataforma te muestra opciones sin colas
+                eternas.
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="card bg-base-200">
+                  <div class="card-body">
+                    <h4 class="card-title text-lg font-semibold mb-2">
+                      Bolsa federal
+                    </h4>
+                    <p>
+                      Vivienda nueva, rehabilitada o concertada. Tú eliges zona
+                      y tipo con todo transparente.
+                    </p>
+                  </div>
+                </div>
+                <div class="card bg-base-200">
+                  <div class="card-body">
+                    <h4 class="card-title text-lg font-semibold mb-2">
+                      Mercado privado
+                    </h4>
+                    <p>
+                      No toca la compra libre ni las segundas residencias. Las
+                      fomenta con reglas claras y fiscalidad estable.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <figure>
+                <div class="w-full h-64 md:h-80 bg-gradient-to-br from-blue-900 to-blue-600 rounded-xl shadow-lg flex items-center justify-center">
+                  <div class="text-center text-white p-6">
+                    <div class="text-6xl mb-4">🏠</div>
+                    <h4 class="text-2xl font-bold mb-2">Vivienda Federal Europea</h4>
+                    <p class="text-lg opacity-90">Acceso garantizado en 22 años</p>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="radio"
+          name="housing_pensions_tabs"
+          role="tab"
+          class="tab"
+          aria-label="Pensiones"
+        />
+        <div
+          role="tabpanel"
+          class="tab-content bg-base-100 border-base-300 rounded-b-xl p-6 h-[600px] overflow-y-auto"
+        >
+          <div class="card bg-base-100">
+            <div class="card-body">
+              <h3
+                class="card-title text-2xl font-bold mb-6 flex items-center gap-3"
+              >
+                <IconCrosshair size={28} /> Pensiones: el pacto que aguanta
+              </h3>
+              <p class="text-lg leading-relaxed mb-6">
+                Las pensiones no dependen solo de lo que cotizas. La
+                productividad tecnológica y fondos federales las mantienen
+                estables y portables. Te mudas de país y tu pensión te sigue sin
+                perder nada. El pacto entre generaciones asegura que funcione
+                décadas.
+              </p>
+
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-start gap-3">
+                  <span class="text-success text-2xl">✓</span>
+                  <span>Pensión que viaja contigo por toda Europa.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-success text-2xl">✓</span>
+                  <span
+                    >Financiación mixta: cotizaciones + innovación y fondos
+                    federales.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-success text-2xl">✓</span>
+                  <span>Prioridad: atención para los mayores.</span
+                  >
+                </li>
+              </ul>
+
+              <figure>
+                <div class="w-full h-64 md:h-80 bg-gradient-to-br from-purple-900 to-purple-600 rounded-xl shadow-lg flex items-center justify-center">
+                  <div class="text-center text-white p-6">
+                    <div class="text-6xl mb-4">🤝</div>
+                    <h4 class="text-2xl font-bold mb-2">Pacto Intergeneracional</h4>
+                    <p class="text-lg opacity-90">Pensiones estables y portables</p>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ común -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold mb-8 text-center">
+          Preguntas frecuentes
+        </h3>
+
+        <div class="join join-vertical w-full mb-4">
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" checked="checked" />
+            <div class="collapse-title text-lg font-medium">
+              ¿Puedo usar sanidad o educación en otro estado?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Sí. Tus derechos federales valen en toda la red. Historial y
+                matrícula se trasladan automáticamente.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title text-lg font-medium">
+              ¿Esto elimina los sistemas actuales?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Salvo en excepciones, los integra con mínimos federales. Los
+                estados pueden mejorar lo que quieran por encima.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title text-lg font-medium">
+              ¿Cómo se pagan las pensiones a largo plazo?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Con cotizaciones + productividad tecnológica y fondos federales.
+                El pacto intergeneracional lo hace sostenible.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

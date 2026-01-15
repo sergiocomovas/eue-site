@@ -1,0 +1,269 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import {
+  IconFlag3,
+  IconId,
+  IconBusSchool,
+  IconCalendarEvent,
+} from "@tabler/icons-react";
+---
+
+<Layout 
+  title="Símbolos e Identidad - Estados Unidos de Europa"
+  description="Símbolos federales europeos: bandera continental, federal, escudo, DNI federal y elementos de identidad compartida hacia 2040-2050-2060."
+  image="/og-simbolos.jpg"
+>
+  <Header />
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <Section
+      title="Símbolos e Identidad Federal"
+      id="symbols"
+      icon={IconFlag3}
+      imagePlaceholder={true}
+      imagePlaceholder2={true}
+    >
+      <p
+        class="text-xl leading-relaxed mb-10 text-center font-light text-base-content/80"
+      >
+        Los símbolos de la federación no son decoración. Son herramientas
+        prácticas para la cohesión, el reconocimiento y la identificación
+        cotidiana. No sustituyen identidades nacionales: las complementan con
+        una capa común clara y funcional.
+      </p>
+
+      <!-- Jerarquía de símbolos -->
+      <h2 class="text-2xl font-bold mb-8 text-center">Jerarquía de Símbolos</h2>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <div class="w-full h-48 bg-blue-600 rounded-xl flex items-center justify-center relative overflow-hidden shadow-lg">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="relative">
+                  <div class="text-yellow-400 text-4xl font-bold flex flex-wrap justify-center gap-2" style="width: 120px;">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute bottom-2 text-white text-xs opacity-80">Bandera Continental</div>
+            </div>
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-3">Bandera Continental</h3>
+            <p class="text-base-content/70">
+              La clásica bandera de doce estrellas doradas sobre fondo azul.
+              Símbolo cultural y civil de pertenencia europea. Se mantiene para
+              eventos populares, escuelas y vida cotidiana.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <div class="w-full h-48 bg-gradient-to-b from-blue-800 to-blue-950 rounded-xl flex items-center justify-center relative overflow-hidden shadow-lg">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="relative">
+                  <div class="text-yellow-300 text-4xl font-bold flex flex-wrap justify-center gap-1 opacity-90" style="width: 100px;">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute bottom-2 text-white text-xs opacity-80">Bandera Federal</div>
+            </div>
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-3">Bandera Federal</h3>
+            <p class="text-base-content/70">
+              Versión institucional sobria y moderna. Usada en edificios
+              federales, documentos oficiales y fuerzas armadas. Complementa sin
+              competir con la bandera continental.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl mb-12">
+        <figure>
+          <div class="w-full h-48 bg-gradient-to-br from-blue-900 to-indigo-950 rounded-xl flex items-center justify-center relative overflow-hidden shadow-lg">
+            <div class="text-center text-white relative z-10">
+              <div class="text-6xl mb-2">🛡️</div>
+              <div class="text-sm font-bold text-yellow-300">ESCUDO FEDERAL</div>
+              <div class="text-xs opacity-70 mt-1">Europa y el Toro</div>
+            </div>
+          </div>
+        </figure>
+        <div class="card-body">
+          <h3 class="card-title text-xl mb-3">Escudo Federal</h3>
+          <p class="text-base-content/70">
+            Diseño minimalista del mito de Europa y el toro. Reservado para
+            sellos oficiales, pasaportes y representación internacional.
+            Elegante y reconocible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Símbolos informales -->
+      <h2 class="text-2xl font-bold mb-8 text-center">
+        Símbolos informales y cotidianos
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <div class="w-full h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center relative overflow-hidden shadow-lg">
+              <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-60">
+                <div class="w-16 h-16 bg-blue-500 rounded-full blur-sm"></div>
+                <div class="w-16 h-16 bg-yellow-500 rounded-full blur-sm"></div>
+                <div class="w-16 h-16 bg-green-500 rounded-full blur-sm"></div>
+                <div class="w-16 h-16 bg-orange-500 rounded-full blur-sm"></div>
+                <div class="w-16 h-16 bg-purple-500 rounded-full blur-sm"></div>
+              </div>
+              <div class="text-center text-white relative z-10">
+                <div class="text-5xl mb-2">🍌</div>
+                <div class="text-sm font-bold">Icono Bananas</div>
+                <div class="text-xs opacity-70">Conexión y prosperidad</div>
+              </div>
+            </div>
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-3">Icono de las Bananas</h3>
+            <p class="text-base-content/70">
+              Cinco mascotas en forma de Banana en colores vivos. Símbolo de libre intepretación, para apps,
+              merchandising, juventud y cultura digital. Representa conexión y
+              prosperidad.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <div class="w-full h-48 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center relative overflow-hidden shadow-lg">
+              <div class="absolute top-2 right-2">
+                <div class="bg-blue-700 text-yellow-300 text-xs px-2 py-1 rounded font-bold flex gap-0.5">
+                  <span>★</span><span>★</span><span>★</span>
+                </div>
+              </div>
+              <div class="text-center text-white relative z-10">
+                <div class="text-6xl mb-2">🚌</div>
+                <div class="text-sm font-bold">AUTOBÚS ESCOLAR</div>
+                <div class="text-xs opacity-80">Federal Europeo</div>
+              </div>
+            </div>
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-3">Autobuses escolares</h3>
+            <p class="text-base-content/70">
+              Diseño unificado amarillo con emblema federal. Crea referencias
+              visuales compartidas desde la infancia y refuerza la idea de
+              comunidad europea.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documentación e identidad -->
+      <h2 class="text-2xl font-bold mb-8 text-center">
+        Identidad y documentación
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="card bg-base-200 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-4">DNI Federal</h3>
+            <p class="text-base-content/70">
+              Documento único con fotografía y llave encriptada para todos los
+              servicios federales. Lo puedes llevar en tu dispositivo tecnológico si lo deseas.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-4">Tarjeta de transporte</h3>
+            <p class="text-base-content/70">
+              Tarjeta única interoperable con todos los sistemas públicos. Viaja
+              sin fricción entre estados federados.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Días federales -->
+      <div class="card bg-base-100 shadow-2xl border border-base-300 mb-12">
+        <div class="card-body">
+          <h3 class="card-title text-2xl mb-6 text-center">Días federales</h3>
+          <ul class="space-y-4 text-center text-lg">
+            <li><strong>9 de mayo</strong> — Día de Europa</li>
+            <li>
+              <strong>26 de diciembre</strong> — Día de la Constitución y la Ciudadanía
+              Federal
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold mb-8 text-center">
+          Preguntas frecuentes
+        </h3>
+
+        <div class="collapse collapse-arrow bg-base-200 mb-4 shadow-md">
+          <input type="radio" name="simbolos_faq" />
+          <div class="collapse-title text-lg font-medium">
+            ¿Por qué crear símbolos nuevos?
+          </div>
+          <div class="collapse-content">
+            <p>
+              Para que la federación sea reconocible como entidad propia, tanto
+              interna como externamente. No sustituyen, complementan.
+            </p>
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-200 mb-4 shadow-md">
+          <input type="radio" name="simbolos_faq" />
+          <div class="collapse-title text-lg font-medium">
+            ¿Se eliminan símbolos nacionales?
+          </div>
+          <div class="collapse-content">
+            <p>
+              No. Permanecen intactos en el ámbito cultural, regional y estatal.
+            </p>
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-200 mb-4 shadow-md">
+          <input type="radio" name="simbolos_faq" />
+          <div class="collapse-title text-lg font-medium">
+            ¿Por qué separar oficial e informal?
+          </div>
+          <div class="collapse-content">
+            <p>
+              Para mantener claridad institucional y permitir libertad creativa
+              en el uso popular.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medios públicos -->
+      <div class="mt-16 card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title text-2xl mb-6 text-center">
+            Ecosistema de medios públicos
+          </h3>
+          <p class="text-lg text-center">
+            Integra radio, TV tradicional, canales FAST y vídeo bajo demanda. Permite subir tu propio contenido.
+            Interoperable con plataformas como YouTube y Netflix. El contenido federal llega donde
+            esté el ciudadano.
+          </p>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

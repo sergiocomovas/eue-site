@@ -1,0 +1,293 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import {
+  IconGlobe,
+  IconUsers,
+  IconCurrencyEuro,
+  IconShield,
+} from "@tabler/icons-react";
+---
+
+<Layout
+  title="Política y Economía - Estados Unidos de Europa - Federación 2040-2050-2060"
+  description="Sistema político federal de los Estados Unidos de Europa: democracia directa, economía blindada, derechos portables y gestión eficiente hacia 2040-2050-2060."
+  image="/og-politica.jpg"
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <Section
+      title="La Federación empieza contigo"
+      id="citizen-core"
+      icon={IconGlobe}
+      imagePlaceholder={true}
+      imagePlaceholder2={true}
+    >
+      <p class="text-2xl leading-relaxed mb-10 text-center font-light">
+        Los Estados Unidos de Europa son una federación democrática pensada para
+        el siglo XXI. Compartes soberanía para ganar estabilidad, derechos
+        reales y capacidad de decisión directa. Europa deja de ser un laberinto
+        burocrático y se convierte en un sistema que responde a las personas.
+      </p>
+
+      <div class="grid gap-8 mb-16 md:grid-cols-2 lg:grid-cols-1">
+        <!-- Democracia -->
+        <div
+          class="card border border-base-content/20 shadow-lg hover:shadow-xl transition-all duration-300 border-primary border-l-10 text-primary"
+        >
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-4 flex items-center gap-2">
+              <IconUsers size={22} /> Democracia directa y representativa
+            </h3>
+            <p class="text-base-content/80 mb-6">
+              Presidente elegido por ti cada 5 años (voto seguro por app o
+              presencial). Parlamento bicameral: una cámara por población, otra
+              por estados. Tu representante personal te responde directamente en
+              la app. Renovaciones cada 2,5 años para evitar bloqueos. Máximo 10
+              años por adminsitración presidencial. Tú influyes de verdad.
+            </p>
+            <div class="card-actions flex flex-wrap gap-3">
+              <button class="btn btn-primary">
+                Cómo se elige al Presidente
+              </button>
+              <button class="btn btn-primary"> Descarga la app </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movilidad -->
+        <div
+          class="card border border-base-content/20 shadow-lg hover:shadow-xl transition-all duration-300 border-success border-l-10 text-success"
+        >
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-4 flex items-center gap-2">
+              <IconGlobe size={22} /> Movilidad y derechos portables
+            </h3>
+            <p class="text-base-content/80 mb-6">
+              Puedes vivir, trabajar o emprender en cualquier estado federado
+              sin perder derechos. Cotizaciones, sanidad, pensiones y paro
+              viajan contigo. Los estados ajustan impuestos dentro de rangos
+              federales para atraer talento y equilibrar el territorio.
+            </p>
+            <div class="card-actions flex flex-wrap gap-3">
+              <button class="btn btn-success">
+                Tus derechos siempre contigo
+              </button>
+              <button class="btn btn-success"> Talento sin límites </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economía -->
+        <div
+          class="card border border-base-content/20 shadow-lg hover:shadow-xl transition-all duration-300 border-warning border-l-10 text-warning"
+        >
+          <div class="card-body">
+            <h3 class="card-title text-xl mb-4 flex items-center gap-2">
+              <IconCurrencyEuro size={22} /> Economía federal transparente
+            </h3>
+            <p class="text-base-content/80 mb-6">
+              Hacienda Federal financia defensa, infraestructuras y servicios
+              comunes. Impuestos claros, deuda compartida con Eurobonos sólidos.
+              Cada ciudadano ve en tiempo real el destino de sus contribuciones.
+              Más control, menos opacidad.
+            </p>
+            <div class="card-actions flex flex-wrap gap-3">
+              <button class="btn btn-warning">
+                Tesoro Federal Europeo
+              </button>
+              <button class="btn btn-warning">
+                Ver mis impuestos en vivo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-2xl border border-base-300 mb-12">
+        <div class="card-body">
+          <h3 class="card-title text-2xl mb-6 text-center justify-center">
+            Federal cuando importa, local cuando importa más
+          </h3>
+          <p class="text-lg leading-relaxed text-center mb-8">
+            La federación gestiona lo estratégico: defensa, moneda, comercio,
+            grandes infraestructuras. Los estados conservan cultura, educación y
+            decisiones cotidianas. Eficiencia sin uniformidad. Más
+            oportunidades, menos riesgos.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 text-center">
+            <div class="alert alert-info">
+              <div>
+                <h4 class="font-bold text-lg mb-2">Estabilidad continental</h4>
+                <p class="text-sm">
+                  Crisis y grandes inversiones se resuelven juntas, sin
+                  respuestas fragmentadas.
+                </p>
+              </div>
+            </div>
+            <div class="alert alert-success">
+              <div>
+                <h4 class="font-bold text-lg mb-2">Identidad preservada</h4>
+                <p class="text-sm">
+                  Lenguas, tradiciones y modelos sociales siguen siendo
+                  competencia local.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12 text-center flex flex-wrap justify-center gap-6">
+        <button
+          class="btn btn-primary btn-lg shadow-lg"
+          onclick="document.getElementById('map-section').scrollIntoView({behavior: 'smooth'})"
+        >
+          Explora el mapa federado
+        </button>
+        <button
+          class="btn btn-success btn-lg shadow-lg"
+          onclick="document.getElementById('faq-section').scrollIntoView({behavior: 'smooth'})"
+        >
+          Preguntas frecuentes
+        </button>
+      </div>
+
+      <div id="map-section" class="mb-16">
+        <div class="card bg-base-100 shadow-2xl">
+          <div class="card-body">
+            <h3 class="card-title text-2xl mb-6 text-center justify-center">
+              Mapa de los Estados Federados
+            </h3>
+            <div class="w-full h-80 bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900 rounded-xl shadow-lg flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-15">
+                <div class="absolute w-32 h-32 rounded-full bg-yellow-500 top-10 left-10 blur-3xl"></div>
+                <div class="absolute w-32 h-32 rounded-full bg-green-500 bottom-10 right-10 blur-3xl"></div>
+                <div class="absolute w-32 h-32 rounded-full bg-orange-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+              </div>
+              <div class="text-center text-white p-6 relative z-10">
+                <div class="text-6xl mb-4">🗺️</div>
+                <h4 class="text-3xl font-bold mb-3">Mapa de Europa Federada</h4>
+                <p class="text-lg opacity-90">Estados federados y corredores EuroBananas</p>
+              </div>
+            </div>
+            <p class="text-center mt-4 text-base-content/70">
+              Estados actuales convertidos en entidades soberanas con
+              competencias compartidas. Las 'bananas' marcan los corredores de
+              alta productividad y conexión.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="faq-section" class="mt-20">
+        <h3 class="text-2xl font-bold mb-8 text-center">Preguntas clave</h3>
+
+        <div class="join join-vertical w-full mb-4">
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" checked="checked" />
+            <div class="collapse-title font-semibold">
+              ¿Qué pasa con la burocracia de la UE?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Se acaba. En EUE tú influyes directamente vía app y respuestas
+                vinculantes. Todo rápido, accesible y sin capas eternas.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title font-semibold">
+              ¿Desaparecen los Estados actuales?
+            </div>
+            <div class="collapse-content">
+              <p>
+                No. Se transforman en estados federados con amplias competencias
+                internas en cultura, educación y gestión local.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title font-semibold">
+              ¿Qué pasa con los estados que ya son federaciones y con las
+              monarquías?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Nada desaparece. Los que ya son federaciones (Alemania, Austria,
+                Bélgica) mantienen sus estructuras internas (Länder, regiones…)
+                y se integran como entidades federadas principales. Las
+                monarquías (España, Bélgica, Suecia…) conservan a sus reyes como
+                jefes simbólicos. La forma de gobierno interna sigue siendo
+                competencia exclusiva de cada estado.
+              </p>
+              <p class="mt-3 italic text-sm text-base-content/70">
+                Precedente: la Alemania de 1871 unió reinos y ducados sin
+                borrarlos.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title font-semibold">
+              ¿Quién decide los impuestos?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Base federal común + márgenes que cada estado ajusta dentro de
+                límites razonables para adaptarse a su realidad.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title font-semibold">
+              ¿Qué gana un ciudadano medio?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Derechos portables, mayor estabilidad económica, voz política
+                con impacto real y vouchers para elegir servicios públicos de
+                calidad en cualquier estado de la federación o centros
+                concertados.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-5" />
+            <div class="collapse-title font-semibold">
+              ¿Qué cambia respecto a la Unión Europea actual?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Se elimina la parálisis por consenso. Decisiones vinculantes,
+                app para quejas directas y menos capas administrativas. Tú
+                influyes de verdad.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <p class="text-xl font-medium">No es una utopía.</p>
+        <p class="text-lg opacity-90">
+          Es una arquitectura política pensada para funcionar en el siglo XXI:
+          eficiente, democrática y cercana.
+        </p>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

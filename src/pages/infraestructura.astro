@@ -1,0 +1,241 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import {
+  IconTrain,
+  IconBuildingAirport,
+  IconShip,
+  IconPlug,
+} from "@tabler/icons-react";
+---
+
+<Layout
+  title="Infraestructura Federal - Estados Unidos de Europa"
+  description="Infraestructura federal europea: EuroBananas, trenes de alta velocidad, red energética, aeropuertos y puertos integrados hacia 2040-2050-2060."
+  image="/og-infraestructura.jpg"
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <Section
+      title="Infraestructura que te conecta de verdad"
+      id="infraestructura"
+      icon={IconTrain}
+      imagePlaceholder={true}
+      imagePlaceholder2={true}
+    >
+      <p class="text-xl leading-relaxed mb-10 text-center font-light">
+        La federación no es solo un nombre bonito. Es una red real que hace que
+        moverte, trabajar y vivir sea más fácil en todo el continente. Las
+        EuroBananas son los ejes principales, pero no dejan a nadie aislado:
+        aeropuertos, puertos y cercanías completan el sistema para que llegues
+        donde quieras sin complicaciones.
+      </p>
+
+      <!-- Mix Energético -->
+      <div class="card bg-base-100 shadow-2xl border border-base-300 mb-12">
+        <div class="card-body">
+          <h3
+            class="card-title text-2xl font-bold mb-6 flex items-center gap-3"
+          >
+            <IconPlug size={28} /> Energía estable y barata para todos
+          </h3>
+          <p class="text-lg leading-relaxed mb-6">
+            La red eléctrica federal combina renovables, nuclear modular y
+            almacenamiento avanzado: baterías de CO₂, hidroeléctrica de bombeo y
+            sistemas gravitacionales. El resultado: tú pagas menos y vives sin
+            preocuparte por apagones.
+          </p>
+          <figure>
+            <div class="w-full h-64 md:h-80 bg-gradient-to-br from-green-900 to-emerald-600 rounded-xl shadow-lg flex items-center justify-center">
+              <div class="text-center text-white p-6">
+                <div class="text-6xl mb-4">⚡</div>
+                <h4 class="text-2xl font-bold mb-2">Red Energética Federal</h4>
+                <p class="text-lg opacity-90">Energía estable y barata para todos</p>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <!-- EuroBananas -->
+      <h2 class="text-2xl font-bold mb-8 text-center">
+        Las EuroBananas: los ejes que mueven Europa
+      </h2>
+      <p class="text-lg leading-relaxed mb-8 text-center">
+        Son corredores de alta capacidad que concentran trenes de alta
+        velocidad, mercancías, energía y datos. Cercanías, aeropuertos y puertos
+        se conectan a estos ejes para que nadie quede fuera.
+      </p>
+
+      <figure class="mb-8">
+        <div class="w-full h-80 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-xl shadow-2xl flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 opacity-20">
+            <div class="absolute w-full h-1 bg-gradient-to-r from-blue-500 to-transparent top-1/4 left-0 transform -rotate-6"></div>
+            <div class="absolute w-full h-1 bg-gradient-to-r from-yellow-500 to-transparent top-1/2 left-0 transform rotate-3"></div>
+            <div class="absolute w-full h-1 bg-gradient-to-r from-green-500 to-transparent top-3/4 left-0 transform -rotate-2"></div>
+            <div class="absolute w-full h-1 bg-gradient-to-r from-orange-500 to-transparent top-2/3 left-0 transform rotate-6"></div>
+            <div class="absolute w-full h-1 bg-gradient-to-r from-purple-500 to-transparent top-1/3 left-0 transform -rotate-4"></div>
+          </div>
+          <div class="text-center text-white p-6 relative z-10">
+            <h4 class="text-3xl font-bold mb-3">🗺️ Mapa EuroBananas</h4>
+            <p class="text-lg opacity-90">Corredores de alta capacidad conectan Europa</p>
+          </div>
+        </div>
+      </figure>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div
+          class="card  border-l-4 border-blue-600"
+        >
+          <div class="card-body p-5">
+            <h5 class="card-title text-lg mb-2">🔵 Azul</h5>
+            <p class="text-sm">Manchester · Birmingham · Milán</p>
+          </div>
+        </div>
+        <div
+          class="card  border-l-4 border-yellow-600"
+        >
+          <div class="card-body p-5">
+            <h5 class="card-title text-lg mb-2">🟡 Dorada</h5>
+            <p class="text-sm">Valencia · Barcelona · Marsella · Génova</p>
+          </div>
+        </div>
+        <div
+          class="card border-l-4 border-green-600"
+        >
+          <div class="card-body p-5">
+            <h5 class="card-title text-lg mb-2">🟢 Verde</h5>
+            <p class="text-sm">Berlín · Praga · Viena · Polonia</p>
+          </div>
+        </div>
+        <div
+          class="card  border-l-4 border-orange-600"
+        >
+          <div class="card-body p-5">
+            <h5 class="card-title text-lg mb-2">🟠 Naranja</h5>
+            <p class="text-sm">Estambul · Atenas · Balcanes</p>
+          </div>
+        </div>
+        <div
+          class="card  border-l-4 border-purple-600"
+        >
+          <div class="card-body p-5">
+            <h5 class="card-title text-lg mb-2">🟣 Púrpura</h5>
+            <p class="text-sm">París · Bruselas · Ámsterdam</p>
+          </div>
+        </div>
+        <div
+          class="card  border-l-4 border-gray-600"
+        >
+          <div class="card-body p-5">
+            <h5 class="card-title text-lg mb-2">⚪ Plateada</h5>
+            <p class="text-sm">Estocolmo · Copenhague · Helsinki</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert bg-base-200 border-l-4 border-primary mb-8">
+        <div>
+          <h4 class="font-bold">Cómo te beneficia en el día a día</h4>
+          <div class="text-sm mt-2">
+            <p>
+              Trenes rápidos de Madrid a París en menos de 6 horas. Aeropuertos
+              y puertos conectados directamente a las bananas. Cercanías
+              modernas que unen ciudades pequeñas, medianas y pueblos al eje
+              principal. Todo pensado para que tardes menos, gastes menos y
+              vivas mejor.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regiones sin corredor directo -->
+      <h3 class="text-2xl font-bold mb-6">
+        ¿Y si vives fuera de una banana principal?
+      </h3>
+      <p class="text-lg mb-6">
+        Nadie queda aislado. Las bananas irradian influencia: empleo, servicios
+        y conexiones llegan a cientos de kilómetros alrededor mediante redes
+        locales, cercanías y enlaces secundarios. El sistema evita concentrar
+        todo en cuatro ciudades y reparte oportunidades de forma equilibrada.
+      </p>
+
+      <ul class="list-disc list-inside space-y-4 mb-8 ml-6">
+        <li>
+          Redes locales rápidas conectan pueblos y ciudades medianas al corredor
+          más cercano.
+        </li>
+        <li>
+          Aeropuertos regionales y puertos pequeños se enlazan directamente a
+          las bananas.
+        </li>
+        <li>
+          Planificación contiene el tamaño de megaciudades y fomenta desarrollo
+          socioeconómico en todas partes.
+        </li>
+      </ul>
+
+      <!-- FAQ -->
+      <div class="mt-12">
+        <h3 class="text-2xl font-bold mb-6 text-center">
+          Preguntas frecuentes
+        </h3>
+
+        <div class="collapse collapse-arrow bg-base-200 mb-4 shadow-md">
+          <input type="radio" name="infra_faq" />
+          <div class="collapse-title text-lg font-medium">
+            ¿Quedar fuera de una banana principal es una desventaja?
+          </div>
+          <div class="collapse-content">
+            <p>
+              No. Las redes locales, cercanías y enlaces secundarios te conectan
+              igual. Además, las bananas generan empleo y servicios que llegan
+              hasta ti.
+            </p>
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-200 mb-4 shadow-md">
+          <input type="radio" name="infra_faq" />
+          <div class="collapse-title text-lg font-medium">
+            ¿Por qué no conectar todo directamente?
+          </div>
+          <div class="collapse-content">
+            <p>
+              Porque sería poco eficiente. Una red jerárquica funciona mejor:
+              ejes potentes + conexiones locales. Así llegamos a más gente.
+            </p>
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-200 mb-4 shadow-md">
+          <input type="radio" name="infra_faq" />
+          <div class="collapse-title text-lg font-medium">
+            ¿Incluye aeropuertos y puertos?
+          </div>
+          <div class="collapse-content">
+            <p>
+              Sí. Los grandes aeropuertos y puertos se integran directamente a
+              las bananas. Los regionales y pequeños se conectan mediante líneas
+              rápidas y logística compartida. Las conexiones por carrera también
+              se integran en la red.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-xl font-medium">
+          Una red pensada para ti, no para burócratas.
+        </p>
+        <p class="text-lg opacity-80">
+          Europa conectada de verdad. Y tú en el centro.
+        </p>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

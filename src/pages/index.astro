@@ -1,0 +1,521 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import LikeButton from "../components/LikeButton.tsx";
+---
+
+<Layout
+  title="Los Nuevos Estados Unidos de Europa"
+  description="Explora la visión de los Estados Unidos de Europa: una federación integrada con gobierno unificado, defensa común y economía blindada."
+>
+  <script>
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const inicializarApp = () => {
+      animarEstrella();
+      animarSecciones();
+      animarVideoYTexto();
+      configurarNavegacion();
+
+      window.addEventListener("resize", () => {
+        ScrollTrigger.refresh();
+      });
+    };
+
+    const animarEstrella = () => {
+      const estrella = document.querySelector(".estrella-federal");
+      gsap.fromTo(
+        estrella,
+        { top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 5 },
+        {
+          top: "28px",
+          left: "30px",
+          xPercent: 0,
+          yPercent: 0,
+          scale: 1,
+          rotation: 360,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: "#seccion-inicio",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    };
+
+    const animarSecciones = () => {
+      // 1. SCROLL HORIZONTAL CORREGIDO
+      const contTarjetas = document.querySelector("#contenedor-tarjetas");
+      if (contTarjetas) {
+        gsap.to(contTarjetas, {
+          x: () => -(contTarjetas.scrollWidth - window.innerWidth),
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#seccion-tarjetas",
+            start: "top top",
+            // Ajustamos el final para que la última tarjeta se vea completa
+            end: () => `+=${contTarjetas.scrollWidth - window.innerWidth}`,
+            scrub: 1,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        });
+      }
+
+      // 2. TARJETAS APILABLES
+      gsap.set(".tarjeta-apilable", { y: "100vh", opacity: 0 });
+      gsap.set(".tarjeta-uno", { y: "0vh", opacity: 1 });
+
+      const tlApilables = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#seccion-apilables",
+          start: "top top",
+          end: "+=400%",
+          scrub: 0.5,
+          pin: true,
+        },
+      });
+
+      tlApilables
+        .to(".tarjeta-uno", { y: -40, opacity: 0, scale: 0.9, duration: 2 })
+        .to(".tarjeta-dos", { y: 0, opacity: 1, duration: 2 }, "-=0.5")
+        .to({}, { duration: 3 })
+        .to(".tarjeta-dos", { y: -40, opacity: 0, scale: 0.9, duration: 2 })
+        .to(".tarjeta-tres", { y: 0, opacity: 1, duration: 2 }, "-=0.5")
+        .to({}, { duration: 3 });
+    };
+
+    const animarVideoYTexto = () => {
+      const video = document.querySelector("#video-fondo");
+      const contenidoFinal = document.querySelector(".contenido-sobre-video");
+      if (!video || !contenidoFinal) return;
+
+      // @ts-ignore
+      video.pause();
+
+      ScrollTrigger.create({
+        trigger: "#seccion-final",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.1,
+        onUpdate: (self) => {
+          // @ts-ignore
+          if (video.duration)
+            video.currentTime = video.duration * self.progress;
+
+          // El texto aparece solo cuando el muñeco ya está casi formado/finalizado
+          if (self.progress > 0.9) {
+            gsap.to(contenidoFinal, {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              overwrite: "auto",
+            });
+          } else {
+            gsap.to(contenidoFinal, {
+              opacity: 0,
+              y: 50,
+              duration: 0.5,
+              overwrite: "auto",
+            });
+          }
+        },
+        onEnter: () => gsap.to(video, { opacity: 0.8, duration: 1 }),
+        onLeaveBack: () => gsap.to(video, { opacity: 0, duration: 1 }),
+      });
+    };
+
+    const configurarNavegacion = () => {
+      const enlaces = document.querySelectorAll('a[href^="#"]');
+      enlaces.forEach((enlace) => {
+        enlace.addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = enlace.getAttribute("href");
+          if (href) {
+            const destino = document.querySelector(href);
+            if (destino) {
+              destino.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }
+        });
+      });
+    };
+
+    inicializarApp();
+  </script>
+</Layout>
+
+<style>
+  :global(body) {
+    font-family: "Inter", sans-serif;
+    background-color: #020617;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  p, a, .descripcion-tarjeta {
+    font-family: "Inter", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  .fuente-titulo {
+    font-family: "Cinzel", serif;
+  }
+
+  /* CORRECCIÓN GLOBAL DE CLICS */
+  :global(.pin-spacer) {
+    pointer-events: none !important;
+  }
+  :global(.pin-spacer > *) {
+    pointer-events: auto !important;
+  }
+
+  .estrella-federal {
+    position: fixed;
+    z-index: 9999;
+    color: white;
+    font-size: 2.5rem;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .barra-navegacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 0;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    pointer-events: auto;
+  }
+  .barra-navegacion a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+  .barra-navegacion a:hover {
+    color: #fbbf24;
+  }
+
+  .seccion {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .bg-hero {
+    background: radial-gradient(circle at center, #1e3a8a 0%, #020617 100%);
+  }
+  .bg-politica {
+    background: linear-gradient(135deg, #020617 0%, #450a0a 100%);
+  }
+  .bg-defensa {
+    background: linear-gradient(135deg, #020617 0%, #312e81 100%);
+  }
+
+  .btn-accion {
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #d97706 0%, #fbbf24 100%);
+    color: #020617 !important;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s;
+  }
+  .btn-accion:hover {
+    transform: scale(1.05);
+  }
+
+  /* SCROLL HORIZONTAL */
+  .seccion-scroll-horizontal {
+    overflow: hidden;
+    background: #020617;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .contenedor-tarjetas {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: 10vw;
+    padding-right: 20vw;
+    gap: 5rem;
+    will-change: transform;
+  }
+  .tarjeta-horizontal {
+    flex-shrink: 0;
+    width: 420px;
+    height: 520px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+  }
+
+  /* APILABLES */
+  .tarjeta-apilable {
+    width: 750px;
+    max-width: 90vw;
+    height: 450px;
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+  .tarjeta-uno {
+    background: #1e3a8a;
+  }
+  .tarjeta-dos {
+    background: #4c1d95;
+  }
+  .tarjeta-tres {
+    background: #0f766e;
+  }
+
+  /* VIDEO Y FINAL */
+  .seccion-final {
+    position: relative;
+    min-height: 400vh; /* Más espacio para sincronizar el final */
+    background: black;
+  }
+  .video-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .contenido-sobre-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    z-index: 1;
+    text-align: center;
+    width: 85%;
+    max-width: 900px;
+    padding: 6rem; /* Margen muy generoso */
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    pointer-events: auto;
+  }
+
+  .titulo-tarjeta {
+    font-size: 2.2rem;
+    color: #fbbf24;
+    margin-bottom: 1rem;
+  }
+  .descripcion-tarjeta {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #f1f5f9;
+  }
+  hr {
+    border: 0;
+    border-top: 1px solid rgba(251, 191, 36, 0.3);
+    margin: 1.5rem 0;
+  }
+</style>
+
+<nav class="barra-navegacion">
+  <div style="width: 60px;"></div>
+  <a href="#seccion-inicio">Visión Federal</a>
+  <a href="#politica">Política y Economía</a>
+  <a href="#defensa">Defensa y Seguridad</a>
+  <a href="#seccion-tarjetas">Explora</a>
+  <a href="#seccion-final">El Futuro</a>
+</nav>
+
+<div class="estrella-federal">★</div>
+
+<main>
+  <section id="seccion-inicio" class="seccion bg-hero">
+    <div class="text-center max-w-5xl px-4">
+      <h1 class="text-6xl md:text-8xl font-bold mb-6">
+        Estados Unidos de Europa
+      </h1>
+      <p
+        class="text-2xl md:text-3xl font-light text-blue-100 mb-10 fuente-titulo italic"
+      >
+        La nueva federación
+      </p>
+        <LikeButton client:load />
+    </div>
+  </section>
+
+  <section id="intro" class="seccion" style="background: #0f172a;">
+    <div class="text-center max-w-4xl px-4">
+      <h2 class="text-4xl md:text-6xl font-bold mb-8">Una Nueva Era</h2>
+      <p class="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed">
+        Los Estados Unidos de Europa no son un sueño. Son una arquitectura
+        política real.
+      </p>
+      <div class="flex flex-wrap justify-center gap-6">
+        <a href="/politica" class="text-white underline font-bold text-lg"
+          >Sistema Político</a
+        >
+        <a href="/defensa" class="text-white underline font-bold text-lg"
+          >Defensa Federal</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section id="politica" class="seccion bg-politica">
+    <div class="text-center max-w-5xl px-4">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Democracia</h2>
+      <p class="text-xl md:text-2xl text-red-100 mb-10">
+        Presidente federal y Parlamento bicameral.
+      </p>
+      <a href="/politica" class="btn-accion">Ver Sistema</a>
+    </div>
+  </section>
+
+  <section id="defensa" class="seccion bg-defensa">
+    <div class="text-center max-w-5xl px-4">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Seguridad</h2>
+      <p class="text-xl md:text-2xl text-purple-100 mb-10">
+        Ejército Europeo profesional y UMEE.
+      </p>
+      <a href="/defensa" class="btn-accion">Explorar Defensa</a>
+    </div>
+  </section>
+
+  <section id="seccion-tarjetas" class="seccion seccion-scroll-horizontal">
+    <div class="contenedor-tarjetas" id="contenedor-tarjetas">
+      <div class="tarjeta-horizontal">
+        <h2 class="titulo-tarjeta">⭐ Soberanía Dual</h2>
+        <hr />
+        <p class="descripcion-tarjeta">
+          Compartimos poder en lo estratégico, identidad en lo local.
+        </p>
+        <a href="/politica" class="btn-accion text-center">Explorar</a>
+      </div>
+      <div class="tarjeta-horizontal">
+        <h2 class="titulo-tarjeta">🛡️ Defensa Federal</h2>
+        <hr />
+        <p class="descripcion-tarjeta">
+          Ejército europeo unificado con todas las ramas de defensa.
+        </p>
+        <a href="/defensa" class="btn-accion text-center">Ver Defensa</a>
+      </div>
+      <div class="tarjeta-horizontal">
+        <h2 class="titulo-tarjeta">🌍 Lingua Franca</h2>
+        <hr />
+        <p class="descripcion-tarjeta">
+          Euro-English para administración y ciencia común.
+        </p>
+        <a href="/educacion" class="btn-accion text-center">Descubrir</a>
+      </div>
+      <div class="tarjeta-horizontal">
+        <h2 class="titulo-tarjeta">🚄 EuroBananas</h2>
+        <hr />
+        <p class="descripcion-tarjeta">
+          Corredores de alta capacidad que conectan el continente.
+        </p>
+        <a href="/infraestructura" class="btn-accion text-center"
+          >Infraestructura</a
+        >
+      </div>
+      <div class="tarjeta-horizontal">
+        <h2 class="titulo-tarjeta">🏠 Vivienda</h2>
+        <hr />
+        <p class="descripcion-tarjeta">
+          Acceso garantizado en máximo 22 años. Vouchers portables.
+        </p>
+        <a href="/vivienda" class="btn-accion text-center">Explorar</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="seccion-apilables" class="seccion bg-slate-900">
+    <div class="tarjeta-apilable tarjeta-uno">
+      <h2 class="titulo-tarjeta">De uno, muchos</h2>
+      <hr />
+      <p class="descripcion-tarjeta">
+        Una Europa integrada con símbolos y economía blindada.
+      </p>
+    </div>
+    <div class="tarjeta-apilable tarjeta-dos">
+      <h2 class="titulo-tarjeta">Gobierno Unificado</h2>
+      <hr />
+      <p class="descripcion-tarjeta">
+        Presidente elegido por ti y Parlamento bicameral federal.
+      </p>
+      <a href="/politica" class="btn-accion mt-6 w-max">Ver Sistema</a>
+    </div>
+    <div class="tarjeta-apilable tarjeta-tres">
+      <h2 class="titulo-tarjeta">Más Allá 2040-2050-2060</h2>
+      <hr />
+      <p class="descripcion-tarjeta">
+        Tecnología y productividad para competir en el mundo.
+      </p>
+      <a href="/vivienda" class="btn-accion mt-6 w-max">Ahora y en el Futuro</a>
+    </div>
+  </section>
+
+  <section id="seccion-final" class="seccion-final">
+    <video id="video-fondo" class="video-fondo" playsinline muted src="/hero-video.mp4"></video>
+
+    <div class="contenido-sobre-video">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">El Futuro es Ahora</h1>
+      <p class="text-xl md:text-3xl mb-12 text-blue-100">
+        Una Europa unida en que volveremos a ser hermanos
+      </p>
+      <a href="/intro" class="btn-accion">Comenzar Exploración</a>
+    </div>
+  </section>
+</main>

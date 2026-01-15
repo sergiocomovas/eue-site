@@ -1,0 +1,154 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  article?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
+  section?: string;
+  tags?: string[];
+  organization?: {
+    name?: string;
+    url?: string;
+    logo?: string;
+    description?: string;
+    address?: {
+      streetAddress?: string;
+      addressLocality?: string;
+      addressRegion?: string;
+      postalCode?: string;
+      addressCountry?: string;
+    };
+  };
+  website?: {
+    name?: string;
+    description?: string;
+    url?: string;
+    image?: string;
+    potentialAction?: {
+      target?: string;
+      queryInput?: string;
+    };
+  };
+}
+
+const {
+  title = "Estados Unidos de Europa - Visión hacia 2040-2050-2060",
+  description = "Descubre la visión de los Estados Unidos de Europa: una federación integrada con gobierno unificado, defensa común y economía blindada hacia 2040-2050-2060.",
+  image = "/og-image.jpg",
+  canonical,
+  noindex = false,
+  nofollow = false,
+  article = false,
+  publishedTime,
+  modifiedTime,
+  authors,
+  section,
+  tags,
+  organization,
+  website
+} = Astro.props;
+
+const siteUrl = "https://estados-unidos-europa.com";
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
+const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
+
+const robots = [noindex ? "noindex" : "index", nofollow ? "nofollow" : "follow"].join(", ");
+
+const schema = {
+  ...(article ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "image": fullImageUrl,
+    "url": canonicalUrl,
+    ...(publishedTime && { "datePublished": publishedTime }),
+    ...(modifiedTime && { "dateModified": modifiedTime }),
+    ...(authors && { "author": authors.map(author => ({ "@type": "Person", "name": author })) }),
+    ...(section && { "articleSection": section }),
+    ...(tags && { "keywords": tags.join(", ") }),
+    "publisher": {
+      "@type": "Organization",
+      "name": "Estados Unidos de Europa",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/logo.png`
+      }
+    }
+  } : {}),
+  ...(website ? {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    ...(website.name && { "name": website.name }),
+    ...(website.description && { "description": website.description }),
+    ...(website.url && { "url": website.url }),
+    ...(website.image && { "image": website.image }),
+    ...(website.potentialAction && {
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": website.potentialAction.target,
+        "query-input": website.potentialAction.queryInput
+      }
+    })
+  } : {}),
+  ...(organization ? {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    ...(organization.name && { "name": organization.name }),
+    ...(organization.url && { "url": organization.url }),
+    ...(organization.description && { "description": organization.description }),
+    ...(organization.logo && {
+      "logo": {
+        "@type": "ImageObject",
+        "url": organization.logo
+      }
+    }),
+    ...(organization.address && {
+      "address": {
+        "@type": "PostalAddress",
+        ...(organization.address.streetAddress && { "streetAddress": organization.address.streetAddress }),
+        ...(organization.address.addressLocality && { "addressLocality": organization.address.addressLocality }),
+        ...(organization.address.addressRegion && { "addressRegion": organization.address.addressRegion }),
+        ...(organization.address.postalCode && { "postalCode": organization.address.postalCode }),
+        ...(organization.address.addressCountry && { "addressCountry": organization.address.addressCountry })
+      }
+    })
+  } : {})
+};
+
+const schemaJson = JSON.stringify(Object.values(schema).filter(Boolean));
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<link rel="canonical" href={canonicalUrl} />
+<meta name="robots" content={robots} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content={article ? "article" : "website"} />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Estados Unidos de Europa" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageUrl} />
+
+{schemaJson && (
+  <script type="application/ld+json" set:html={schemaJson} />
+)}

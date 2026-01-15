@@ -1,0 +1,177 @@
+---
+import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+import SEO from "../components/SEO.astro";
+import CookieConsent from "../components/CookieConsent.tsx";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/cinzel/400.css";
+import "@fontsource/cinzel/600.css";
+import "@fontsource/cinzel/700.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  article?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
+  section?: string;
+  tags?: string[];
+  organization?: any;
+  website?: any;
+}
+
+const {
+  title = "Estados Unidos de Europa",
+  description = "Descubre la visión de los Estados Unidos de Europa: una federación integrada con gobierno unificado, defensa común y economía blindada hacia 2040-2050-2060.",
+  image,
+  canonical,
+  noindex,
+  nofollow,
+  article,
+  publishedTime,
+  modifiedTime,
+  authors,
+  section,
+  tags,
+  organization,
+  website = {
+    name: "Estados Unidos de Europa",
+    description: description,
+    url: "https://estados-unidos-europa.com",
+    image: image,
+  },
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth" data-theme="light">
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      noindex={noindex}
+      nofollow={nofollow}
+      article={article}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      authors={authors}
+      section={section}
+      tags={tags}
+      organization={organization}
+      website={website}
+    />
+    <ViewTransitions />
+  </head>
+  <body
+    class="font-sans bg-base-100 text-base-content transition-colors duration-200"
+  >
+    <slot />
+    <CookieConsent client:load />
+
+    <script is:inline>
+      function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+      }
+
+      function getTheme() {
+        const stored = localStorage.getItem("theme");
+        if (stored) return stored;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      function toggleTheme() {
+        const current = getTheme();
+        const themes = ["light", "dark", "corporate", "business", "luxury"];
+        const currentIndex = themes.indexOf(current);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        setTheme(themes[nextIndex]);
+        updateThemeButton(themes[nextIndex]);
+      }
+
+      function updateThemeButton(theme) {
+        const btn = document.getElementById("theme-toggle-btn");
+        if (btn) {
+          const icon = btn.querySelector("span");
+          if (icon) {
+            icon.textContent = getThemeIcon(theme);
+          }
+        }
+      }
+
+      function getThemeIcon(theme) {
+        const icons = {
+          light: "☀️",
+          dark: "🌙",
+          corporate: "🏢",
+          business: "💼",
+          luxury: "✨",
+        };
+        return icons[theme] || "☀️";
+      }
+
+      window.toggleTheme = toggleTheme;
+      window.setTheme = setTheme;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const theme = getTheme();
+        setTheme(theme);
+        updateThemeButton(theme);
+      });
+
+      document.addEventListener("astro:after-swap", () => {
+        const theme = getTheme();
+        updateThemeButton(theme);
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.3s;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: fade-in;
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

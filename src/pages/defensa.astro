@@ -1,0 +1,235 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import { IconShield } from "@tabler/icons-react";
+---
+
+<Layout
+  title="Seguridad y Defensa · Estados Unidos de Europa"
+  description="Defensa federal unificada: Ejército Europeo, Policía Federal y UMEE para emergencias."
+  image="/og-defensa.jpg"
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <Section
+      title="¿Es importante una Europa segura?"
+      id="defense"
+      icon={IconShield}
+      imagePlaceholder={true}
+      imagePlaceholder2={true}
+    >
+      <!-- INTRO -->
+      <p class="text-2xl leading-relaxed mb-12 text-center font-light">
+        Sin seguridad no hay derechos efectivos. Los Estados Unidos de Europa
+        nacen para garantizar la protección de sus ciudadanos en un mundo
+        inestable, sin depender de potencias externas ni fragmentar la respuesta
+        entre países. Seguridad común significa prevención, coordinación y
+        rapidez.
+      </p>
+
+      <!-- EJÉRCITO -->
+      <div class="card shadow-lg mb-10 border-1 border-neutral">
+        <div class="card-body">
+          <h3 class="card-title text-xl mb-4">Defensa Federal Unificada</h3>
+          <p class="text-base-content/80 mb-4">
+            La defensa exterior es competencia exclusiva del gobierno federal.
+            El Ejército Europeo es profesional, integrado y permanente, con
+            ramas de Tierra, Mar, Aire, Espacio y Ciberdefensa. Su función es
+            disuasoria: evitar conflictos y proteger el territorio federal.
+          </p>
+          <p class="text-base-content/80">
+            Los sistemas estratégicos, incluido el arsenal nuclear compartido,
+            están bajo control civil federal y supervisión parlamentaria, con
+            normas estrictas de uso y transparencia democrática.
+          </p>
+
+          <div class="card-actions mt-6">
+            <button class="btn btn-neutral">
+              Estrategia de defensa común
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- POLICÍA FEDERAL -->
+      <div class="card shadow-lg mb-10 border-1 border-primary">
+        <div class="card-body">
+          <h3 class="card-title text-xl mb-4">Policía Federal Europea</h3>
+          <p class="text-base-content/80 mb-4">
+            La Policía Federal Europea actúa contra amenazas que superan las
+            fronteras estatales: crimen organizado, terrorismo, cibercrimen,
+            tráfico de personas y corrupción a gran escala.
+          </p>
+          <p class="text-base-content/80">
+            No sustituye a las policías locales. Interviene solo cuando los
+            delitos afectan a varios estados o a infraestructuras federales,
+            trabajando siempre bajo control judicial.
+          </p>
+
+          <ul class="list-disc list-inside mt-4 text-base-content/80 space-y-1">
+            <li>Investigación criminal transnacional</li>
+            <li>Protección de infraestructuras críticas</li>
+            <li>Coordinación con fiscalías federales</li>
+            <li>Ciberseguridad y delitos digitales</li>
+          </ul>
+
+          <div class="card-actions mt-6">
+            <button class="btn btn-primary">
+              Seguridad interior federal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- UMEE -->
+      <div class="card border-1 border-success shadow-lg mb-12">
+        <div class="card-body">
+          <h3 class="card-title text-xl mb-4">
+            Unidad Federal de Emergencias (UMEE)
+          </h3>
+
+          <p class="text-base-content/80 mb-4">
+            La UMEE es un cuerpo federal profesional y permanente que coordina y
+            agrupa los recursos de protección civil, emergencias y respuesta
+            rápida de toda la federación. Actúa ante incendios, inundaciones,
+            terremotos, crisis sanitarias y emergencias tecnológicas en
+            cualquier estado federado en cuestión de horas.
+          </p>
+
+          <p class="text-base-content/80 mb-6">
+            Junto a su núcleo profesional, la UMEE integra un sistema de
+            servicio cívico europeo abierto a jóvenes y a cualquier ciudadano
+            que quiera contribuir. Este modelo combina formación, utilidad
+            social y cohesión territorial, sin convertir la defensa en una
+            obligación militar clásica.
+          </p>
+
+          <ul class="list-disc list-inside text-base-content/80 mb-6 space-y-2">
+            <li>
+              <strong>Cuerpo profesional:</strong> personal especializado a tiempo
+              completo que garantiza continuidad, experiencia y coordinación federal.
+            </li>
+            <li>
+              <strong>Servicio cívico europeo:</strong> participación temporal para
+              jóvenes y voluntarios, centrada en emergencias y apoyo a la población.
+            </li>
+            <li>
+              <strong>Elección prioritaria:</strong> quien elige área y destino recibe
+              retribución y formación reconocida.
+            </li>
+            <li>
+              <strong>Equilibrio del sistema:</strong> si no se elige destino, el
+              servicio puede asignarse de forma obligatoria y no retribuida.
+            </li>
+            <li>
+              <strong>Flexibilidad:</strong> duración mínima de 90 días, continuos
+              o por periodos acumulables.
+            </li>
+            <li>
+              <strong>Reconocimiento oficial:</strong> certificaciones federales válidas
+              en todo el territorio europeo.
+            </li>
+          </ul>
+
+          <h4 class="font-semibold mb-4">Áreas de participación</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="alert alert-error">
+              <div>
+                <h5 class="font-bold">Intervención</h5>
+                <p class="text-xs">
+                  Rescate, incendios, catástrofes naturales y acción directa en
+                  situaciones críticas.
+                </p>
+              </div>
+            </div>
+
+            <div class="alert alert-warning">
+              <div>
+                <h5 class="font-bold">Logística y técnica</h5>
+                <p class="text-xs">
+                  Infraestructuras, transporte, energía, comunicaciones y apoyo
+                  técnico en emergencias.
+                </p>
+              </div>
+            </div>
+
+            <div class="alert alert-info">
+              <div>
+                <h5 class="font-bold">Asistencial</h5>
+                <p class="text-xs">
+                  Sanidad de campaña, apoyo social, tercera edad y atención a
+                  población vulnerable.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions mt-6 flex flex-wrap gap-3">
+            <button class="btn btn-success"> Servicio Cívico Europeo </button>
+            <button class="btn btn-success btn-outline">
+              UMEE Profesional
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div id="faq-section" class="mt-16">
+        <h3 class="text-2xl font-bold mb-8 text-center">
+          Preguntas frecuentes sobre seguridad
+        </h3>
+
+        <div class="join join-vertical w-full mb-4">
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-4" checked="checked" />
+            <div class="collapse-title font-semibold">
+              ¿Se pierde soberanía nacional en defensa?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Sí, de forma consciente. A cambio se gana capacidad real de
+                protección y decisión conjunta.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-4" />
+            <div class="collapse-title font-semibold">
+              ¿La Policía Federal puede actuar en cualquier estado?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Solo en delitos federales o transnacionales y siempre bajo
+                autorización judicial.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-4" />
+            <div class="collapse-title font-semibold">¿La UMEE es militar?</div>
+            <div class="collapse-content">
+              <p>
+                Tiene estructura militar, pero su función es civil y
+                humanitaria.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <p class="text-xl font-medium">Seguridad no es militarización.</p>
+        <p class="text-lg opacity-80">
+          Es garantizar que la libertad pueda existir.
+        </p>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</Layout>

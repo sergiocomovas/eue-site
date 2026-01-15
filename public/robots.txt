@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://estados-unidos-europa.com/sitemap.xml

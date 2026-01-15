@@ -1,0 +1,98 @@
+---
+import { IconMenu } from "@tabler/icons-react";
+
+const navPrimary = [
+  { href: "/intro", label: "La Federación Explicada" },
+  { href: "/politica", label: "Escucha Hermano" },
+  { href: "/defensa", label: "Defensa" },
+  { href: "/infraestructura", label: "Infraestructura" },
+  { href: "/vivienda", label: "Vivienda y Pensiones" },
+];
+
+const navSecondary = [
+  { href: "/educacion", label: "Lingua Franca" },
+  { href: "/simbolos", label: "Símbolos" },
+];
+---
+
+<div
+  class="navbar bg-base-100/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-base-200"
+>
+  <div class="navbar-start">
+    <a
+      href="/"
+      class="btn btn-ghost gap-3 normal-case text-base font-semibold tracking-tight"
+    >
+      <div class="avatar">
+        <div
+          class="w-9 rounded-full bg-gradient-to-br from-primary to-primary-focus flex items-center justify-center"
+        >
+          <span class="text-accent text-sm font-bold">★</span>
+        </div>
+      </div>
+      Estados Unidos de Europa
+    </a>
+  </div>
+
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 gap-2">
+      {
+        navPrimary.map((item) => (
+          <li>
+            <a href={item.href} class="hover:text-primary transition-colors">
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <details>
+          <summary>Más</summary>
+          <ul class="bg-base-100 rounded-t-none p-2">
+            {
+              navSecondary.map((item) => (
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <div class="navbar-end gap-2">
+    <button
+      id="theme-toggle-btn"
+      class="btn btn-ghost btn-circle"
+      onclick="toggleTheme()"
+      aria-label="Cambiar tema"
+    >
+      <span class="text-xl">☀️</span>
+    </button>
+
+    <div class="dropdown dropdown-end lg:hidden">
+      <label
+        tabindex="0"
+        role="button"
+        class="btn btn-ghost btn-circle"
+        aria-label="Abrir menú"
+      >
+        <IconMenu class="w-6 h-6" />
+      </label>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 rounded-box w-52 border border-base-200"
+      >
+        {
+          [...navPrimary, ...navSecondary].map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>

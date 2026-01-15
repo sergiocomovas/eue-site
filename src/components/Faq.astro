@@ -1,0 +1,78 @@
+---
+import { IconChevronDown } from "@tabler/icons-react";
+
+const faqs = [
+  {
+    question:
+      "¿Qué diferencia hay entre la Unión Europea actual y los Estados Unidos de Europa?",
+    answer:
+      "Los EUE son una federación plena con soberanía compartida, mientras que la UE es una unión de estados. En los EUE, el poder federal gestiona defensa, hacienda y educación básica, mientras que los estados mantienen autonomía en cultura y gestión local. Hay un ejército unificado, tesoro federal único y ciudadanía europea plena.",
+  },
+  {
+    question: "¿Qué es la UMEE y cómo funciona?",
+    answer:
+      "La Unidad Militar de Emergencias Europea es el eje de cohesión social y respuesta rápida. Es un servicio civil donde los ciudadanos pueden elegir el área de especialización (Intervención, Logística o Asistencial). Si eliges voluntariamente, el servicio es retribuido; si no, es obligatorio y no pagado. Al finalizar, obtienes titulaciones oficiales homologadas.",
+  },
+  {
+    question: "¿Cómo funciona el sistema de impuestos?",
+    answer:
+      "Existe un Tesoro Federal permanente con impuestos progresivos. El gobierno federal fija rangos (mínimo-máximo) y las provincias eligen su tasa dentro de esos rangos. Esto permite atractividad fiscal para combatir la despoblación. Los ciudadanos tienen visibilidad en tiempo real de sus tributos mediante la App Federal Oficial.",
+  },
+  {
+    question: "¿Qué es el Euro-English?",
+    answer:
+      "El Euro-English es una herramienta técnica continental con una ortografía racional europea. Mantiene la estructura visual de las palabras pero estandariza la fricativa \"th\" usando d' o t' con apóstrofe (d'e, d'is, t'ought, t'rough). Adopta las 5 vocales continentales puras y prioriza raíces latinas para cohesión administrativa.",
+  },
+  {
+    question: '¿Qué son las "Bananas Europeas"?',
+    answer:
+      "Son corredores de alta velocidad que conectan las principales ciudades europeas en forma de curva: Azul (Manchester-Londres-Milán), Dorada (Valencia-Barcelona-Marsella-Génova), Verde (Berlín-Praga-Viena-Polonia), Naranja (Estambul-Atenas-Balcanes), Púrpura (París-Bruselas-Ámsterdam) y Plateada (Estocolmo-Copenhague-Helsinki).",
+  },
+  {
+    question: "¿Qué pasa con las monarquías actuales?",
+    answer:
+      "Los países con rey (España, Bélgica) conservan a sus monarcas como símbolos históricos locales, pero sin ningún rol en la estructura federal. La soberanía institucional recae en las instituciones federales europeas.",
+  },
+  {
+    question: "¿Cómo se garantiza la transparencia fiscal?",
+    answer:
+      "Mediante la App Federal Oficial, cada ciudadano tiene visibilidad de sus tributos en tiempo real, conociendo el destino exacto de cada euro pagado. Esto garantiza una transparencia absoluta sobre el uso de los recursos públicos.",
+  },
+  {
+    question: "¿Qué beneficios aporta el sistema de titulaciones de la UMEE?",
+    answer:
+      "Las titulaciones oficiales homologadas permiten la incorporación inmediata al mercado laboral o continuar estudios superiores. Por ejemplo, una certificación en Logística Avanzada permite trabajar en constructoras transnacionales, operadoras de transporte o servicios de infraestructuras críticas.",
+  },
+];
+---
+
+<section id="faq" class="py-16 md:py-24 bg-base-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Preguntas Frecuentes
+        </h2>
+        <p class="text-lg text-base-content/70">
+          Dudas sobre la visión de los Estados Unidos de Europa
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {
+          faqs.map((faq, index) => (
+            <div class="collapse collapse-arrow bg-base-100 shadow-sm border border-base-300">
+              <input type="radio" name="faq-accordion" />
+              <div class="collapse-title text-base font-medium pr-8">
+                {faq.question}
+              </div>
+              <div class="collapse-content">
+                <p class="text-base-content/70 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

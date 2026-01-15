@@ -1,0 +1,149 @@
+---
+import type { HTMLAttributes } from "astro";
+
+interface Props {
+  title: string;
+  icon?: typeof import("@tabler/icons-react").Icon;
+  children: any;
+  id?: string;
+  imagePlaceholder?: boolean;
+  note?: string;
+  imagePlaceholder2?: boolean;
+  imagePlaceholder3?: boolean;
+}
+
+const {
+  title,
+  icon: Icon,
+  id,
+  imagePlaceholder,
+  note,
+  imagePlaceholder2,
+  imagePlaceholder3,
+} = Astro.props;
+---
+
+<section id={id} class="py-16 md:py-24 scroll-mt-20">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <div class="lg:flex-1">
+        {
+          Icon && (
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary text-primary-content">
+                <Icon class="w-7 h-7 text-accent" />
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold">{title}</h2>
+            </div>
+          )
+        }
+
+        <div class="prose prose-lg max-w-none">
+          <slot />
+        </div>
+      </div>
+
+      {
+        (imagePlaceholder || imagePlaceholder2 || imagePlaceholder3) && (
+          <div class="lg:w-80 flex-shrink-0 flex flex-col gap-4">
+            {imagePlaceholder && (
+              <div class="card bg-base-200 shadow-xl border-2 border-dashed border-base-300 min-h-[400px] flex items-center justify-content-center">
+                <div class="card-body text-center">
+                  <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-base-300">
+                    <Icon class="w-8 h-8 text-base-content/60" />
+                  </div>
+                  <p class="text-sm text-base-content/60">
+                    Imagen para {title}
+                  </p>
+                </div>
+              </div>
+            )}
+            {imagePlaceholder2 && (
+              <div class="card bg-base-200 shadow-xl border-2 border-dashed border-base-300 min-h-[300px] flex items-center justify-content-center">
+                <div class="card-body text-center">
+                  <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center bg-base-300">
+                    <Icon class="w-6 h-6 text-base-content/60" />
+                  </div>
+                  <p class="text-xs text-base-content/60">Imagen adicional</p>
+                </div>
+              </div>
+            )}
+            {imagePlaceholder3 && (
+              <div class="card bg-base-200 shadow-xl border-2 border-dashed border-base-300 min-h-[250px] flex items-center justify-content-center">
+                <div class="card-body text-center">
+                  <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center bg-base-300">
+                    <Icon class="w-6 h-6 text-base-content/60" />
+                  </div>
+                  <p class="text-xs text-base-content/60">Imagen adicional 2</p>
+                </div>
+              </div>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    {
+      note && (
+        <div class="alert alert-warning shadow-lg mt-8">
+          <span class="text-xl">📋</span>
+          <div>
+            <h3 class="font-bold">Nota adicional</h3>
+            <div class="text-sm">{note}</div>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style is:global>
+  .prose {
+    line-height: 1.75;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .prose h4 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .prose ul {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .prose ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .prose li::marker {
+    color: var(--tw-text-opacity, 1);
+    font-weight: 600;
+  }
+
+  .prose strong {
+    font-weight: 700;
+  }
+
+  .prose p {
+    color: var(--tw-text-opacity, 1);
+  }
+
+  .prose ul {
+    color: var(--tw-text-opacity, 1);
+  }
+</style>

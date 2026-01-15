@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import { IconBook } from "@tabler/icons-react";
+---
+
+<Layout
+  title="Educación e Identidad · Estados Unidos de Europa"
+  description="Educación federal: currículo común, Lingua Franca europea, tecnología compartida y movilidad académica hacia 2040-2050-2060."
+  image="/og-educacion.jpg"
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <Section
+      title="Educación, Cultura y Lengua Común"
+      id="education"
+      icon={IconBook}
+      imagePlaceholder={true}
+      imagePlaceholder2={true}
+      imagePlaceholder3={true}
+    >
+      <!-- INTRO -->
+      <p class="text-2xl leading-relaxed mb-12 text-center font-light">
+        Una federación no se sostiene solo con leyes y economía. Necesita una
+        base educativa común y herramientas compartidas que permitan a sus
+        ciudadanos comunicarse, formarse y cooperar sin barreras innecesarias.
+        La diversidad cultural se protege mejor cuando existe un marco común
+        claro.
+      </p>
+
+      <!-- EDUCACIÓN -->
+      <div class="card bg-base-200 shadow-xl mb-10">
+        <div class="card-body">
+          <h3 class="card-title text-xl font-bold mb-4">
+            Currículo Federal Común
+          </h3>
+          <p class="text-base-content mb-4">
+            El gobierno federal establece un currículo mínimo compartido que
+            garantiza igualdad de oportunidades educativas en todo el
+            territorio. Incluye historia europea común, ciencias, pensamiento
+            crítico, competencias digitales e inteligencia artificial aplicada.
+          </p>
+          <p class="text-base-content">
+            Los estados federados conservan plena autonomía para ampliar y
+            adaptar los contenidos según su lengua, cultura y contexto social.
+          </p>
+
+          <div class="card-actions justify-start mt-6">
+            <button class="btn btn-neutral btn-sm">
+              Marco educativo federal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LENGUA FRANCA -->
+      <div class="card bg-primary text-primary-content shadow-xl mb-10">
+        <div class="card-body">
+          <h3 class="card-title text-xl font-bold mb-4">
+            Lingua Franca Europea
+          </h3>
+          <p class="mb-4">
+            La Unión actual sufre una contradicción: reconoce 24 lenguas
+            oficiales, pero opera de facto en un inglés irregular y desigual. La
+            federación resuelve este problema definiendo una lengua franca común
+            con carácter técnico y neutral.
+          </p>
+          <p class="mb-4">
+            Esta lengua no sustituye a las lenguas nacionales ni regionales.
+            Funciona como herramienta común para administración, educación
+            superior, ciencia y cooperación entre estados.
+          </p>
+
+          <div class="alert bg-base-100 text-base-content my-6">
+            <div class="font-mono text-sm">
+              Ejemplo de uso técnico y administrativo simplificado:
+              
+              <ul>
+                <li>
+                  <strong
+                    >"Federal reséarch dáta must be sháreḍ across member státes"</strong
+                  >
+                </li>
+
+                <li>
+                  <strong
+                    >"Stúdents obtáin a federal certificátion after compléting
+                    the prógram"</strong
+                  >
+                </li>
+
+                <li>
+                  <strong
+                    >"This dócument is apprōvėd by the Federal Edūcátion
+                    Auth.órity"</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pl-4 w-40">
+              <span class="text-2xl block text-center font-bold px-5">😜</span>
+              La pronunciación se adapta a criterios continentales de
+              inteligibilidad y el léxico prioriza raíces continentales para
+              facilitar el aprendizaje transversal.
+            </div>
+          </div>
+
+          <div class="card-actions justify-start mt-6 flex-wrap gap-3">
+            <button class="btn btn-primary btn-sm">
+              Descrube tu nivel de Lingua Franca
+            </button>
+            <button class="btn btn-secondary btn-sm">
+              Diferencias con el Inglés
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TECNOLOGÍA Y CULTURA -->
+      <div class="card bg-accent text-accent-content shadow-xl mb-12">
+        <div class="card-body">
+          <h3 class="card-title text-xl font-bold mb-4">
+            Tecnología y Cultura Compartida
+          </h3>
+          <p class="mb-4">
+            Las aulas federales incorporan tecnología sobria y funcional:
+            dispositivos de papel digital, acceso universal a contenidos y
+            reducción de la dependencia del móvil.
+          </p>
+          <p class="mb-4">
+            Elementos visuales comunes —como transporte escolar o símbolos
+            discretos en la vestimenta— ayudan a construir un imaginario
+            compartido sin eliminar identidades locales.
+          </p>
+
+          <div class="card-actions justify-start mt-6">
+            <button class="btn btn-accent btn-sm">
+              Campus Federal Europeo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div id="faq-section" class="mt-16">
+        <h3 class="text-2xl font-bold mb-8 text-center">
+          Preguntas frecuentes
+        </h3>
+
+        <div class="join join-vertical w-full mb-4">
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-4" checked="checked" />
+            <div class="collapse-title text-lg font-medium">
+              ¿Se impone una cultura única?
+            </div>
+            <div class="collapse-content">
+              <p>
+                No. El modelo protege la diversidad cultural y lingüística,
+                añadiendo solo herramientas comunes.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-4" />
+            <div class="collapse-title text-lg font-medium">
+              ¿Es obligatorio aprender la lengua franca?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Es necesaria para funciones federales y estudios superiores,
+                pero no sustituye a las lenguas locales.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow join-item border border-base-300">
+            <input type="radio" name="my-accordion-4" />
+            <div class="collapse-title text-lg font-medium">
+              ¿Qué gana un ciudadano?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Acceso igualitario a educación, movilidad académica y
+                oportunidades profesionales en toda la federación.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <p class="text-xl font-medium">
+          Compartir herramientas no borra identidades.
+        </p>
+        <p class="text-lg opacity-80">Las hace compatibles.</p>
+      </div>
+    </Section>
+  </main>
+</Layout>
+<Footer />

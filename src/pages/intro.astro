@@ -1,0 +1,236 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import { IconWorld, IconArrowRight } from "@tabler/icons-react";
+---
+
+<Layout 
+  title="Estados Unidos de Europa · Tu futuro, más cerca"
+  description="Descubre los Estados Unidos de Europa: una federación real para 2040-2050-2060 que resuelve fragmentación, burocracia y desigualdad."
+  image="/og-intro.jpg"
+>
+  <Header />
+  <main>
+    <Section
+      title="Estados Unidos de Europa"
+      subtitle="Una federación hecha para funcionar"
+      id="intro"
+      icon={IconWorld}
+      imagePlaceholder={true}
+      imagePlaceholder2={true}
+      imagePlaceholder3={true}
+    >
+      <p class="text-2xl leading-relaxed mb-8 text-center font-light">
+        Los Estados Unidos de Europa no son un sueño ni una ampliación de la UE.
+        Son una federación real que resuelve lo que hoy nos frena:
+        fragmentación, burocracia lenta, debilidad estratégica y desigualdad
+        entre regiones. Todo pensado para que vivir, trabajar y moverte por
+        Europa sea tan sencillo como hacerlo en tu propio país.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-10 text-center">
+        No borra identidades ni impone uniformidad. Comparte soberanía en lo que
+        funciona mejor de forma conjunta y deja lo cotidiano en manos de tu
+        región. Simple, práctico y directo.
+      </p>
+
+      <!-- Navegación rápida -->
+      <h3 class="text-2xl font-bold mb-6 text-center">
+        ¿Qué quieres descubrir?
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <a
+          href="/politica"
+          class="group card bg-base-200 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <div class="card-body">
+            <h4
+              class="card-title text-lg mb-2 flex items-center justify-between"
+            >
+              Cómo se gobierna y se financia
+              <IconArrowRight
+                class="opacity-70 group-hover:opacity-100 transition"
+                size={20}
+              />
+            </h4>
+            <p class="text-sm text-base-content/70">
+              Sistema político, fiscalidad común y cómo se gestiona la llegada de
+              nuevos vecinos.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/defensa"
+          class="group card bg-base-200 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <div class="card-body">
+            <h4
+              class="card-title text-lg mb-2 flex items-center justify-between"
+            >
+              Seguridad y protección
+              <IconArrowRight
+                class="opacity-70 group-hover:opacity-100 transition"
+                size={20}
+              />
+            </h4>
+            <p class="text-sm text-base-content/70">
+              Ejército profesional, servicio juvenil voluntario y respuesta rápida
+              a emergencias.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/infraestructura"
+          class="group card bg-base-200 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <div class="card-body">
+            <h4
+              class="card-title text-lg mb-2 flex items-center justify-between"
+            >
+              Conexión real: las EuroBananas
+              <IconArrowRight
+                class="opacity-70 group-hover:opacity-100 transition"
+                size={20}
+              />
+            </h4>
+            <p class="text-sm text-base-content/70">
+              Trenes rápidos, energía estable y redes que unen el continente sin
+              dejar a nadie atrás.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/educacion"
+          class="group card bg-base-200 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <div class="card-body">
+            <h4
+              class="card-title text-lg mb-2 flex items-center justify-between"
+            >
+              Educación y lengua común
+              <IconArrowRight
+                class="opacity-70 group-hover:opacity-100 transition"
+                size={20}
+              />
+            </h4>
+            <p class="text-sm text-base-content/70">
+              Currículo compartido, universidad federal y un inglés europeo
+              práctico para todos.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/simbolos"
+          class="group card bg-base-200 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <div class="card-body">
+            <h4
+              class="card-title text-lg mb-2 flex items-center justify-between"
+            >
+              Símbolos e identidad
+              <IconArrowRight
+                class="opacity-70 group-hover:opacity-100 transition"
+                size={20}
+              />
+            </h4>
+            <p class="text-sm text-base-content/70">
+              Banderas, escudo y elementos cotidianos que unen sin imponer.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/vivienda"
+          class="group card bg-base-200 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          <div class="card-body">
+            <h4
+              class="card-title text-lg mb-2 flex items-center justify-between"
+            >
+              Vivienda y servicios que viajan contigo
+              <IconArrowRight
+                class="opacity-70 group-hover:opacity-100 transition"
+                size={20}
+              />
+            </h4>
+            <p class="text-sm text-base-content/70">
+              Acceso universal a vivienda, sanidad y educación sin perder
+              derechos al mudarte.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <!-- FAQ -->
+      <h3 class="text-2xl font-bold mb-6 text-center">
+        Preguntas que suelen salir
+      </h3>
+
+      <div class="space-y-6 max-w-3xl mx-auto">
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h4 class="font-bold mb-1">¿Esto borra los países?</h4>
+            <p class="text-base-content/80">
+              No. Los países se convierten en estados federados con competencias
+              claras. La soberanía se comparte solo en lo que funciona mejor de
+              forma conjunta.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h4 class="font-bold mb-1">
+              ¿Es solo una idea bonita o hay base real?
+            </h4>
+            <p class="text-base-content/80">
+              Parte de problemas concretos: duplicidades, lentitud en decisiones,
+              dependencia externa y desigualdad entre regiones. No es ideología,
+              es arquitectura práctica.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h4 class="font-bold mb-1">
+              ¿Qué cambia para el ciudadano de a pie?
+            </h4>
+            <p class="text-base-content/80">
+              Menos trámites al mudarte, servicios que viajan contigo,
+              transparencia en impuestos y una voz que cuenta de verdad en Europa.
+              Todo más sencillo y más justo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA FINAL -->
+      <div
+        class="mt-12 alert bg-gradient-to-r from-primary to-primary-content text-white shadow-2xl"
+      >
+        <div>
+          <h4 class="text-2xl font-bold mb-4">¿Por dónde empezamos?</h4>
+          <p class="text-lg mb-6 opacity-90">
+            El núcleo de todo es cómo se gobierna y se financia la federación. Ahí
+            empieza el cambio real.
+          </p>
+          <a
+            href="/politica"
+            class="btn btn-primary btn-lg"
+          >
+            Ver el sistema político y económico →
+          </a>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>
