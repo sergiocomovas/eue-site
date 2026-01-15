@@ -1,8 +1,8 @@
-# Sistema de Temas Claro/Oscuro
+# Sistema de Temas daisyUI
 
 ## Visión General
 
-Este proyecto implementa un sistema de temas claro/oscuro completamente funcional basado en Tailwind CSS y JavaScript nativo. El sistema permite a los usuarios cambiar entre temas con persistencia automática y transiciones suaves.
+Este proyecto implementa un sistema de temas basado en daisyUI, que proporciona múltiples temas preconfigurados que cambian automáticamente los colores semánticos de la aplicación. El sistema permite a los usuarios cambiar entre temas con persistencia automática y transiciones suaves.
 
 ## Arquitectura del Sistema
 
@@ -19,8 +19,8 @@ Este proyecto implementa un sistema de temas claro/oscuro completamente funciona
    - Iconos: `IconSun` (tema claro), `IconMoon` (tema oscuro)
 
 3. **Componentes Visuales** - Estilos adaptativos
-   - Todos los componentes utilizan clases `dark:` de Tailwind
-   - Ejemplo: `bg-white dark:bg-gray-900`
+   - Todos los componentes utilizan colores semánticos de daisyUI
+   - Ejemplo: `bg-base-100 text-base-content`
 
 ## Mecanismo de Funcionamiento
 
@@ -44,8 +44,7 @@ El tema se determina en este orden:
 ```javascript
 function applyTheme(theme) {
   const html = document.documentElement;
-  html.classList.remove('light', 'dark');
-  html.classList.add(theme);
+  html.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
   
   document.cookie = `theme=${theme}; path=/; max-age=31536000`;
@@ -53,7 +52,7 @@ function applyTheme(theme) {
 ```
 
 El sistema:
-- Actualiza la clase `dark` en el elemento `<html>`
+- Actualiza el atributo `data-theme` en el elemento `<html>`
 - Almacena la preferencia en localStorage
 - Establece una cookie para persistencia del lado del servidor
 
@@ -75,39 +74,56 @@ Para evitar parpadeos al cargar:
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return stored || (systemDark ? 'dark' : 'light');
   })();
-  document.documentElement.classList.add(theme);
+  document.documentElement.setAttribute('data-theme', theme);
 </script>
 ```
 
 ## Implementación en Componentes
 
-### Patrones de Clases Tailwind
+### Patrones de Colores Semánticos daisyUI
 
 #### Fondos
 ```astro
-<!-- Fondo claro: blanco, Fondo oscuro: gris oscuro -->
-<div class="bg-white dark:bg-gray-900">
+<!-- Fondo base (cambia según tema) -->
+<div class="bg-base-100">
 
-<!-- Fondo con gradiente -->
-<div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-950">
+<!-- Fondo secundario -->
+<div class="bg-base-200">
+
+<!-- Fondo acentuado -->
+<div class="bg-base-300">
 ```
 
 #### Texto
 ```astro
 <!-- Texto principal -->
-<p class="text-gray-900 dark:text-gray-100">
+<p class="text-base-content">
 
 <!-- Texto secundario -->
-<span class="text-gray-600 dark:text-gray-400">
+<span class="text-base-content/70">
 ```
 
 #### Bordes
 ```astro
 <!-- Bordes sutiles -->
-<div class="border border-gray-200 dark:border-gray-700">
+<div class="border-base-300">
 
 <!-- Bordes de énfasis -->
-<div class="border-blue-200 dark:border-blue-900">
+<div class="border-primary">
+```
+
+#### Colores Semánticos
+```astro
+<!-- Colores funcionales -->
+<button class="btn btn-primary">Acción principal</button>
+<button class="btn btn-secondary">Acción secundaria</button>
+<button class="btn btn-accent">Acento</button>
+
+<!-- Colores de estado -->
+<div class="text-success">Éxito</div>
+<div class="text-warning">Advertencia</div>
+<div class="text-error">Error</div>
+<div class="text-info">Información</div>
 ```
 
 #### Iconos
@@ -133,10 +149,10 @@ interface CardProps {
 const { title, description } = Astro.props;
 ---
 
-<div class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors duration-200">
-  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{title}</h3>
-  <p class="text-gray-600 dark:text-gray-400">{description}</p>
-  <div class="mt-4 flex items-center gap-2 text-blue-600 dark:text-blue-400">
+<div class="bg-base-100 rounded-lg border border-base-300 p-6 transition-colors duration-200">
+  <h3 class="text-xl font-bold text-base-content mb-2">{title}</h3>
+  <p class="text-base-content/70">{description}</p>
+  <div class="mt-4 flex items-center gap-2 text-primary">
     <IconStar />
     <span>Destacado</span>
   </div>
@@ -145,44 +161,50 @@ const { title, description } = Astro.props;
 
 ## Especificaciones de Diseño
 
-### Paleta de Colores
+### Colores Semánticos daisyUI
 
-#### Tema Claro
-- Fondo principal: `bg-white`
-- Fondo secundario: `bg-gray-50`, `bg-blue-50`
-- Texto principal: `text-gray-900`
-- Texto secundario: `text-gray-600`
-- Bordes: `border-gray-200`, `border-gray-300`
-- Acentos: `blue-600`, `indigo-600`
+#### Colores Base (siempre disponibles)
+- `bg-base-100` / `text-base-content` - Fondo/texto principal
+- `bg-base-200` / `text-base-content/70` - Fondo/texto secundario
+- `bg-base-300` / `text-base-content/50` - Fondo/texto terciario
 
-#### Tema Oscuro
-- Fondo principal: `bg-gray-900`
-- Fondo secundario: `bg-gray-800`, `bg-gray-950`
-- Texto principal: `text-gray-100`
-- Texto secundario: `text-gray-400`
-- Bordes: `border-gray-700`, `border-gray-800`
-- Acentos: `blue-400`, `indigo-400`
+#### Colores Funcionales
+- `primary` - Color primario (acciones principales)
+- `secondary` - Color secundario (acciones secundarias)
+- `accent` - Color de acento (detalles destacados)
+- `neutral` - Color neutro (información genérica)
+
+#### Colores de Estado
+- `success` - Éxito/confirmación
+- `warning` - Advertencia/precaución
+- `error` - Error/crítico
+- `info` - Información/nota
+
+### Temas Disponibles
+
+daisyUI incluye múltiples temas preconfigurados:
+- `light` - Tema claro por defecto
+- `dark` - Tema oscuro por defecto
+- `cupcake`, `bumblebee`, `emerald`, `corporate`, `synthwave`, etc.
+
+Puedes configurar los temas disponibles en `tailwind.config.js`.
 
 ### Contraste WCAG
 
-Todos los colores cumplen con:
+Todos los colores semánticos de daisyUI cumplen con:
 - **WCAG AA**: Contraste mínimo 4.5:1 para texto normal
 - **WCAG AAA**: Contraste mínimo 7:1 para texto grande
 
-Ejemplos:
-- `text-gray-900` sobre `bg-white`: 21:1 ✓
-- `text-gray-100` sobre `bg-gray-900`: 15:1 ✓
-- `text-gray-600` sobre `bg-white`: 7:1 ✓
-- `text-gray-400` sobre `bg-gray-900`: 6:1 ✓
+Los temas daisyUI están diseñados para cumplir automáticamente con los estándares de accesibilidad.
 
 ## Modificación y Extensión
 
-### Añadir Dark Mode a un Nuevo Componente
+### Añadir Soporte de Temas a un Nuevo Componente
 
 1. Identificar todos los elementos visuales (fondo, texto, bordes, iconos)
-2. Para cada clase de Tailwind, añadir la variante `dark:`
+2. Reemplazar colores específicos de Tailwind con colores semánticos daisyUI
 3. Asegurar transiciones suaves: `transition-colors duration-200`
-4. Verificar contraste en ambos temas
+4. Verificar contraste en múltiples temas
 
 **Ejemplo:**
 ```astro
@@ -190,16 +212,34 @@ Ejemplos:
 <div class="bg-blue-500 text-white p-4">
 
 <!-- DESPUÉS -->
-<div class="bg-blue-500 dark:bg-blue-700 text-white p-4 transition-colors duration-200">
+<div class="bg-primary text-primary-content p-4 transition-colors duration-200">
 ```
 
-### Crear un Nuevo Color de Acento
+### Configurar Nuevos Temas
 
-```astro
-<!-- Definir ambos variantes -->
-<button class="bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white">
-  Botón de acción
-</button>
+Edita `tailwind.config.js` para añadir o personalizar temas:
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  // ...
+  daisyui: {
+    themes: [
+      "light",
+      "dark",
+      {
+        mytheme: {
+          "primary": "#009080",
+          "secondary": "#9900f0",
+          "accent": "#f00000",
+          "neutral": "#003f49",
+          "base-100": "#f3f4f6",
+          // ... más colores
+        },
+      },
+    ],
+  },
+}
 ```
 
 ### Modificar el Selector de Tema
@@ -207,7 +247,7 @@ Ejemplos:
 El selector de tema se encuentra en `src/components/Header.astro`. Para personalizar:
 
 1. Cambiar iconos en las importaciones
-2. Modificar estilos del botón en las clases Tailwind
+2. Modificar estilos del botón con clases daisyUI
 3. Ajustar la lógica en `updateThemeIcons()` si cambia la estructura
 
 ## Páginas Especiales
@@ -225,7 +265,7 @@ Esta página mantiene su diseño original sin selector de temas:
 
 Todas las demás páginas (`educacion.astro`, `vivienda.astro`, etc.) incluyen:
 - Header con selector de tema
-- Componentes con soporte completo dark mode
+- Componentes con soporte completo de temas daisyUI
 - Transiciones suaves entre temas
 
 ## Troubleshooting
@@ -233,6 +273,7 @@ Todas las demás páginas (`educacion.astro`, `vivienda.astro`, etc.) incluyen:
 ### Tema no persiste al recargar
 - Verificar que `localStorage.setItem('theme', theme)` se está llamando
 - Comprobar que el script inline de inicialización está presente en Layout.astro
+- Verificar que `data-theme` se establece en `<html>` element
 
 ### Parpadeo al cargar
 - Asegurar que el script inline tiene `is:inline`
@@ -244,19 +285,25 @@ Todas las demás páginas (`educacion.astro`, `vivienda.astro`, etc.) incluyen:
 - Asegurar que las importaciones de iconos son explícitas (no barrels)
 
 ### Colores sin contraste suficiente
-- Usar herramientas de contraste WCAG online
-- Verificar combinaciones de texto/fondo en ambos temas
-- Ajustar clases Tailwind según sea necesario
+- Usar colores semánticos daisyUI que cumplen WCAG
+- Evitar colores personalizados sin verificar contraste
+- Verificar combinaciones en múltiples temas usando herramientas online
+
+### Temas no cambian
+- Verificar que daisyUI está instalado: `pnpm add -D daisyui`
+- Comprobar que `tailwind.config.js` tiene daisyUI configurado
+- Asegurar que el atributo `data-theme` se actualiza correctamente
 
 ## Convenciones de Código
 
 ### Reglas de Oro
 
-1. **SIEMPRE** usar `dark:` prefix para variantes oscuras
-2. **SIEMPRE** importar iconos explícitamente: `import { IconName } from '@tabler/icons-react'`
-3. **NUNCA** usar `any` o `unknown` en TypeScript
-4. **SIEMPRE** añadir `transition-colors duration-200` para transiciones suaves
-5. **SIEMPRE** verificar contraste WCAG en ambos temas
+1. **SIEMPRE** usar colores semánticos daisyUI (`bg-base-100`, `text-base-content`, etc.)
+2. **NUNCA** usar clases `dark:` de Tailwind con colores daisyUI
+3. **SIEMPRE** importar iconos explícitamente: `import { IconName } from '@tabler/icons-react'`
+4. **NUNCA** usar `any` o `unknown` en TypeScript
+5. **SIEMPRE** añadir `transition-colors duration-200` para transiciones suaves
+6. **SIEMPRE** verificar contraste WCAG en múltiples temas
 
 ### Ejemplo Correcto
 
@@ -267,19 +314,34 @@ import { IconCheck } from '@tabler/icons-react';
 const { completed } = Astro.props;
 ---
 
-<div class="flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 transition-colors duration-200">
-  <div class={`w-6 h-6 rounded-full flex items-center justify-center ${completed ? 'bg-green-500 dark:bg-green-600' : 'bg-gray-200 dark:bg-gray-700'}`}>
-    {completed && <IconCheck class="text-white" />}
+<div class="flex items-center gap-3 p-4 bg-base-100 rounded-lg border border-base-300 transition-colors duration-200">
+  <div class={`w-6 h-6 rounded-full flex items-center justify-center ${completed ? 'bg-success text-success-content' : 'bg-base-200'}`}>
+    {completed && <IconCheck />}
   </div>
-  <span class="text-gray-900 dark:text-gray-100">
+  <span class="text-base-content">
     <slot />
   </span>
 </div>
 ```
 
+### Ejemplo Incorrecto
+
+```astro
+<!-- ❌ NO: Usar clases dark: de Tailwind -->
+<div class="bg-white dark:bg-gray-900">
+
+<!-- ❌ NO: Usar colores específicos de Tailwind -->
+<div class="bg-blue-500 text-white">
+
+<!-- ✅ SI: Usar colores semánticos daisyUI -->
+<div class="bg-primary text-primary-content">
+```
+
 ## Referencias
 
-- [Tailwind CSS Dark Mode](https://tailwindcss.com/docs/dark-mode)
+- [daisyUI Themes](https://daisyui.com/docs/themes/)
+- [daisyUI Colors](https://daisyui.com/docs/colors/)
+- [daisyUI LLM Guide](https://daisyui.com/llms.txt)
 - [Tabler Icons](https://tabler-icons.io/)
 - [WCAG Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - [Astro View Transitions](https://docs.astro.build/en/guides/view-transitions/)

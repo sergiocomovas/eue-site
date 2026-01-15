@@ -161,13 +161,13 @@ import { IconStar, IconHeart, IconMenu } from '@tabler/icons-react';
 <div class="bg-gray-900 text-white p-4">
 ```
 
-### Dark Mode
+### Temas daisyUI
 ```astro
-// ❌ NO: olvidar variantes dark:
-<p class="text-gray-900">Este texto no se ve en dark mode</p>
+// ❌ NO: usar clases dark: de Tailwind
+<p class="text-gray-900 dark:text-gray-100">
 
-// ✅ SI: siempre incluir variantes:
-<p class="text-gray-900 dark:text-gray-100">Visible en ambos temas</p>
+// ✅ SI: usar colores semánticos daisyUI
+<p class="text-base-content">
 ```
 
 ## 🏗 Arquitectura del Proyecto
@@ -210,7 +210,7 @@ Este proyecto usa Astro + React + TypeScript. Aplicar las siguientes reglas:
 ### Estilos
 - Tailwind CSS para TODO
 - No CSS custom excepto cuando sea absolutamente necesario
-- Dark mode usando clases con `dark:` prefix
+- Temas usando colores semánticos de daisyUI (`bg-base-100`, `text-base-content`, etc.)
 
 ### Imports
 - Iconos: Importación explícita desde `@tabler/icons-react`
@@ -238,7 +238,7 @@ Antes de crear un commit, verificar:
 - [ ] Los componentes UI usan daisyUI cuando aplica
 - [ ] Los iconos se importan explícitamente (no barrels)
 - [ ] No hay `any` o `unknown` innecesarios
-- [ ] Dark mode funciona correctamente
+- [ ] Los temas daisyUI funcionan correctamente
 - [ ] Mobile-first responsive está implementado
 - [ ] HTML semántico usado correctamente
 - [ ] No hay console.logs de producción
@@ -268,7 +268,7 @@ Ejemplo:
 
 ### Cuerpo del PR
 - Explicar QUÉ cambió y POR QUÉ
-- CÓMO se probó (navegación, dark mode, responsive, etc.)
+- CÓMO se probó (navegación, temas, responsive, etc.)
 - CÓMO se verifica (`pnpm build`, pruebas manuales, etc.)
 - Capturas de pantalla para cambios visuales (si aplica)
 
@@ -309,10 +309,10 @@ Ejemplo:
 - Asegurar que las importaciones sean correctas
 - Revisar sintaxis de plantillas Astro (se cierran correctamente)
 
-### Dark mode no funciona
-- Verificar que todas las clases tengan variantes `dark:`
-- Revisar que el `<html>` tiene `class="dark"` cuando esté activo
-- Probar en modo oscuro y claro
+### Temas no funcionan correctamente
+- Verificar que el `data-theme` attribute está presente en el `<html>` element
+- Probar en múltiples temas daisyUI (light, dark, etc.)
+- Revisar que todos los componentes usan colores semánticos daisyUI
 
 ## 📚 Recursos de Referencia
 
