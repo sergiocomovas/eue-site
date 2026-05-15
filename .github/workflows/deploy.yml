@@ -31,8 +31,11 @@ jobs:
         with:
           version: latest
 
+      - name: Approve build scripts
+        run: pnpm config set confirmModulesPatches false
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build site
         run: pnpm build
