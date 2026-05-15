@@ -25,5 +25,11 @@
   "devDependencies": {
     "@fontsource/inter": "^5.2.8",
     "daisyui": "^5.5.14"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }
