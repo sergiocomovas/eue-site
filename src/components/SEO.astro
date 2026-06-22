@@ -61,8 +61,31 @@ const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${baseUrl}${i
 
 const robots = [noindex ? "noindex" : "index", nofollow ? "nofollow" : "follow"].join(", ");
 
-const schema = {
-  ...(article ? {
+// Person node — always present, links to canonical profile on web.comovas.es
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://web.comovas.es/#person",
+  "url": "https://web.comovas.es/",
+  "name": "Sergio R. González",
+  "alternateName": "sergiocomovas",
+  "jobTitle": "Web Developer",
+  "description": "Web Developer de Palma de Mallorca. Creador del proyecto Estados Unidos de Europa.",
+  "sameAs": [
+    "https://github.com/sergiocomovas",
+    "https://www.linkedin.com/in/sergiocomovas"
+  ]
+};
+
+// Build schema array — each entry is a complete, self-contained JSON-LD object
+const schemas = [];
+
+// Always include Person (author identity)
+schemas.push(personSchema);
+
+// Article schema (for blog/article pages)
+if (article) {
+  schemas.push({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -74,16 +97,20 @@ const schema = {
     ...(authors && { "author": authors.map(author => ({ "@type": "Person", "name": author })) }),
     ...(section && { "articleSection": section }),
     ...(tags && { "keywords": tags.join(", ") }),
-      "publisher": {
-        "@type": "Organization",
-        "name": "Estados Unidos de Europa",
-        "logo": {
-          "@type": "ImageObject",
-          "url": `${siteUrl}${baseUrl}/logo.png`
-        }
+    "publisher": {
+      "@type": "Organization",
+      "name": "Estados Unidos de Europa",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}${baseUrl}/logo.png`
       }
-  } : {}),
-  ...(website ? {
+    }
+  });
+}
+
+// WebSite schema
+if (website) {
+  schemas.push({
     "@context": "https://schema.org",
     "@type": "WebSite",
     ...(website.name && { "name": website.name }),
@@ -97,8 +124,12 @@ const schema = {
         "query-input": website.potentialAction.queryInput
       }
     })
-  } : {}),
-  ...(organization ? {
+  });
+}
+
+// Organization schema
+if (organization) {
+  schemas.push({
     "@context": "https://schema.org",
     "@type": "Organization",
     ...(organization.name && { "name": organization.name }),
@@ -120,10 +151,10 @@ const schema = {
         ...(organization.address.addressCountry && { "addressCountry": organization.address.addressCountry })
       }
     })
-  } : {})
-};
+  });
+}
 
-const schemaJson = JSON.stringify(Object.values(schema).filter(Boolean));
+const schemaJson = JSON.stringify(schemas);
 ---
 
 <meta charset="UTF-8" />
